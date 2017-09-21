@@ -1,0 +1,4450 @@
+130952170839441
+
+
+  items.map(function (item) {
+                                     return db.collection("facets",function (err,collection) {
+                                        return  collection.findOne({_id:"FIT","values.id":item.fit},{"values":1}).then(function (fits,error) {
+                                            (fits.values).map(function (fit) {
+                                                 if(fit.id == item.fit){
+                                                     item.fit = fit.default
+                                                 }
+                                             })
+                                          })
+                                      })
+                                  })
+
+
+
+                                  {
+                                      "_id" : "WXmXO2Xv8Q-97DrO",
+                                      "updatedAt" : ISODate("2017-07-27T07:33:15.395+0000"),
+                                      "createdAt" : ISODate("2017-07-27T07:33:15.395+0000"),
+                                      "services" : {
+                                          "facebook" : {
+                                              "accessToken" : "EAAK2vZCAhAssBAE9CNpooyHFO6ORTv1F4QEOmZC72ODYH3h2ZAsrv0p9AwlocQdadVQxmdfpIGmXCSuZAbxcrksIOTTsRxNRxARc3QpgpHfuXJvRWjHjokpiYnUabyATnQ5lZAAaAGcwkrwM9DB8nRd73QAcOO08TQqbJyLK8S9G36FGNG5VLEXvWvyQAZCkOCcQmAYZCQzpTJLvAYyo9rrfKxCCpw3fggZD",
+                                              "expiresAt" : 1505477386000.0,
+                                              "id" : "10155349268115499",
+                                              "name" : "Nancy B. Singh",
+                                              "email" : "nancy.bhasin@gmail.com",
+                                              "location" : {
+                                                  "name" : "New Delhi, India",
+                                                  "_id" : ObjectId("5979973b65eff10fbdec3acd")
+                                              }
+                                          }
+                                      },
+                                      "profile" : {
+                                          "avatar" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/16807171_10154869303050499_7896444567679021724_n.jpg?oh=5ff6f3421c5dcedc0145395047429004&oe=59C60FD4",
+                                          "email" : "nancy.bhasin@gmail.com",
+                                          "gender" : "female",
+                                          "location" : "New Delhi, India",
+                                          "name" : "Nancy B. Singh",
+                                          "picture" : "http://graph.facebook.com/10155349268115499/picture/?type=large"
+                                      },
+                                      "profileData" : {
+                                          "styles" : [
+                                              "Traditional/Ethnic",
+                                              "Sexy/Party",
+                                              "High Street",
+                                              "Boho"
+                                          ],
+                                          "shoeSize" : [
+                                              "4"
+                                          ],
+                                          "height" : [
+
+                                          ],
+                                          "hipSize" : [
+                                              "35",
+                                              "36"
+                                          ],
+                                          "lowerWaistSize" : [
+                                              "28"
+                                          ],
+                                          "upperWaistSize" : [
+                                              "25",
+                                              "26"
+                                          ],
+                                          "bustSize" : [
+                                              "33",
+                                              "34"
+                                          ],
+                                          "dressSize" : [
+                                              "XS",
+                                              "S"
+                                          ]
+                                      }
+                                  }
+
+                                  db.timeTracker.aggregate( {$group:{_id:{Day:{ $dayOfMonth: "$date"},Month:{ $month: "$date" },Year:{ $year: "$date" }},date:{$first: "$date"},
+                                    totalHours: { $sum: "$hours" },totalMins:{ $sum: "$mins"}}},{$match:{"_id.Month":10,"_id.Year":2017}},{$addFields:{_id:"$date"}},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var config = {
+
+    db: {
+        host:'mongodb://127.0.0.1/thisforthat',
+        port: 27017,
+        database: "thisforthat",
+        username:"spurtree",
+        password:"spur2win"
+    },
+    server:{
+      host:'localhost',
+      port:'9000'
+
+    },
+
+    auth:{
+        admin:{
+            tokenExpiry : 7,
+            authSecret: "thisforthat",
+        }
+    },
+    admin:{
+        defaultPageLimit : 10,
+        defaultPageNumber: 1
+    },
+    app:{
+        defaultProductsLimit : 50,
+        defaultPageNumber: 1
+    },
+    fileUpload:{
+        uploadPath : 'static/uploads',
+        downloadPath:'/uploads/'
+
+    },
+
+    upload_facets:{
+        fit : "FIT",
+        brand: "BRANDS",
+        swapType:"SWAPTYPE",
+        swapWith:"SWAPWITH"
+    },
+    facets:{
+        FIT :"fit",
+        BRANDS: "brand",
+        SWAPTYPE:"swapType",
+        SWAPWITH:"swapWith",
+        BUST_SIZE:"BUST_SIZE",
+        DRESS_SIZE:"DRESS_SIZE",
+        HIP_SIZE:"HIP_SIZE",
+        LOWER_WAIST_SIZE:"LOWER_WAIST_SIZE",
+        UPPER_WAIST_SIZE:"UPPER_WAIST_SIZE",
+        SHOE_SIZE:"SHOE_SIZE"
+    }
+
+
+};
+
+module.exports = config;
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : "Wa6XNjV_EV9oQvVB",
+    "updatedAt" : ISODate("2017-09-05T12:23:18.128+0000"),
+    "createdAt" : ISODate("2017-09-05T12:23:18.128+0000"),
+    "services" : {
+        "facebook" : {
+            "id" : "109055026499432",
+            "expiresAt" : 1509775482000.0,
+            "accessToken" : "EAAK2vZCAhAssBAMWLNSyzqLMa69P60677xHygQNHccbKGpOrmhs95yDaw0l26xq0FZB7XyGuZAfcYmkPJQh0KE7MQBmaVW8Ys0PcbTugI3kM7Emivz7NC2ktQUqW51u7cqaVoZBwjvhKJLJfDdAZCcgrRhV3MTGHe7hX5HyZCoZAbhtt856VnAKGTkHgdlfrD5Jyv4oK9jp2ZBvmItzn6z1BK6DAJEDGyFZBh3WcZBSWSl0XJbgUtB07t0xuyZCGX1cxwoeIuWM2PXb6QZDZD",
+            "location" : {
+                "name" : "",
+                "_id" : ObjectId("59ae9736357f115f6842f540")
+            },
+            "email" : "testuserfemale@gmail.com",
+            "name" : "Soumya Ramesh"
+        }
+    },
+    "profileData" : {
+        "styles" : [
+            "Sexy/Party",
+            "High Street",
+            "Vintage"
+        ],
+        "shoeSize" : [
+
+        ],
+        "height" : [
+
+        ],
+        "hipSize" : [
+            "41"
+        ],
+        "lowerWaistSize" : [
+            "34"
+        ],
+        "upperWaistSize" : [
+            "29"
+        ],
+        "bustSize" : [
+            "43"
+        ],
+        "dressSize" : [
+            "XXL"
+        ]
+    },
+    "profile" : {
+        "picture" : "http://graph.facebook.com/109055026499432/picture/?type=large",
+        "gender" : "female",
+        "avatar" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/21272515_109138023157799_373037755200175966_n.jpg?oh=8dd3854f84eebbf926c6766ce4bd3953&oe=5A191B28",
+        "location" : "",
+        "email" : "testuserfemale@gmail.com",
+        "name" : "Soumya Ramesh"
+    }
+}
+
+
+
+
+130952170839441
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : "CONDITION",
+    "title" : "Condition",
+    "values" : [
+        {
+                "id" : "1",
+                "default" : "Never used but have had it for a while",
+                "children" : [
+                    {
+                        "_id" : "Washed_Dry_Cleaned",
+                        "default" : "Washed / Dry Cleaned",
+                    },
+                    {
+                        "_id" : "No_Stains",
+                        "default" : "No Stains",
+                    },
+                    {
+                        "_id" : "No_Rips",
+                        "default" : "No Rips",
+                    }
+                ]
+        },
+         {
+                "id" : "2",
+                "default" : "Worn once or twice",
+                "children" : [
+                    {
+                        "_id" : "Washed_Dry_Cleaned",
+                        "default" : "Washed / Dry Cleaned",
+                    },
+                    {
+                        "_id" : "No_Stains",
+                        "default" : "No Stains",
+                    },
+                    {
+                        "_id" : "No_Rips",
+                        "default" : "No Rips",
+                    }
+                ]
+        },
+         {
+                "id" : "3",
+                "default" : "Used but still great",
+                "children" : [
+                    {
+                        "_id" : "Washed_Dry_Cleaned",
+                        "default" : "Washed / Dry Cleaned",
+                    },
+                    {
+                        "_id" : "No_Stains",
+                        "default" : "No Stains",
+                    },
+                    {
+                        "_id" : "No_Rips",
+                        "default" : "No Rips",
+                    }
+                ]
+        },
+        {
+                "id" : "4",
+                "default" : "SignS of Wear",
+                "children" : [
+                    {
+                        "_id" : "Washed_Dry_Cleaned",
+                        "default" : "Washed / Dry Cleaned",
+                    },
+                    {
+                        "_id" : "No_Stains",
+                        "default" : "No Stains",
+                    },
+                    {
+                        "_id" : "No_Rips",
+                        "default" : "No Rips",
+                    }
+                ]
+        },
+        {
+                        "id" : "5",
+                        "default" : "Brand new tag intact",
+                        "children" : null
+        },
+         {
+                        "id" : "6",
+                        "default" : "Brand new without tag",
+                        "children" : null
+        },
+
+    ],
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : "59b0f7061a60a60078d75d28",
+    "name" : "Earing Box",
+    "color" : "blue",
+    "description" : "This can be used to store studs and tiny earings. Bought it from delhi haat.",
+    "credits" : NumberInt(500),
+
+    "sub_category":"5968b5b8634221055dfd8c32",
+    "fit" : null,
+    "brand" : "OTHERS"
+
+     "swapType" : "1",
+    "swapWith" : "1",
+    "images" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1463556142024_0_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1463556142031_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1463556142035_2_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "size" : null,
+    "imagesSmall" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1463556142024_0_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1463556142031_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1463556142035_2_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "userId" : "WXmYcWXv8Q-97DrV",
+    "time_created" : 1463556082675.0,
+    "time_approved" : 1463556680714.0,
+    "time_featured" : 1463556082675.0,
+    "time_rejected" : 1463556082675.0,
+    "approved" : true,
+    "isActive":true
+    "rejected" : false,
+    "featured" : false,
+    "status" : NumberInt(4),
+    "user_profile" : {
+        "avatar" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/18556958_1417721058270962_596492174567310916_n.jpg?oh=7d20c89409c87fe08c4045b9324da214&oe=5A354501",
+        "email" : "ankitanadig94@gmail.com",
+        "gender" : "female",
+        "location" : "Bangalore, India",
+        "name" : "Ankita Nadig",
+        "picture" : "http://graph.facebook.com/1476564062386661/picture/?type=large"
+    },
+    "categoryId" : "5968b5b9634221055dfd8c4a"
+}
+{
+    "_id" : "59b0f7061a60a60078d75d29",
+    "name" : "Kurta",
+    "color" : "lemon yellow",
+    "description" : "Pretty cotton kurta from Max, in the lightest shade of lemon yellow. It is size small, but easily fits upto bust 34-36. ",
+    "credits" : NumberInt(1000),
+    "category" : {
+        "itemId" : "CLOTHES",
+        "itemName" : "CLOTHES"
+    },
+    "subcategories" : [
+        {
+            "itemId" : "CLOTHES",
+            "itemName" : "CLOTHES"
+        },
+        {
+            "itemId" : "INDIAN-WEAR",
+            "itemName" : "INDIAN WEAR"
+        },
+        {
+            "itemName" : "KURTIS",
+            "itemId" : "CLOTHES_INDIAN-WEAR_KURTIS"
+        }
+    ],
+    "fit" : {
+        "itemId" : "RUNS-BIG",
+        "itemName" : "RUNS BIG"
+    },
+    "brand" : {
+        "id" : "SMALL-INDIE-BRANDS",
+        "name" : "SMALL INDIE BRANDS"
+    },
+    "rules" : [
+        {
+            "itemId" : "PERMANENT-SWAP-ONLY",
+            "itemName" : "PERMANENT SWAP ONLY"
+        },
+        {
+            "itemId" : "MESSAGE-BEFORE-PROPOSING-SWAP",
+            "itemName" : "MESSAGE BEFORE PROPOSING SWAP"
+        }
+    ],
+    "condition" : {
+        "itemId" : "WORN-ONCE-OR-TWICE",
+        "itemName" : "WORN ONCE OR TWICE"
+    },
+    "images" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1478157449474_0_.jpg",
+            "filter" : "none",
+            "isCover" : true
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1478157449482_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1478157449485_2_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "size" : [
+        {
+            "itemType" : "GENERIC",
+            "itemId" : "INDIAN-S",
+            "itemName" : "S"
+        }
+    ],
+    "imagesSmall" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1478157449474_0_.jpg",
+            "filter" : "none",
+            "isCover" : true
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1478157449482_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1478157449485_2_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "userId" : "WXmYcWXv8Q-97DrV",
+    "time_created" : 1478157365903.0,
+    "time_approved" : 1478157434925.0,
+    "time_featured" : 1478157365903.0,
+    "time_rejected" : 1478157365903.0,
+    "approved" : true,
+    "rejected" : false,
+    "featured" : false,
+    "status" : NumberInt(0),
+    "user_profile" : {
+        "avatar" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/18556958_1417721058270962_596492174567310916_n.jpg?oh=7d20c89409c87fe08c4045b9324da214&oe=5A354501",
+        "email" : "ankitanadig94@gmail.com",
+        "gender" : "female",
+        "location" : "Bangalore, India",
+        "name" : "Ankita Nadig",
+        "picture" : "http://graph.facebook.com/1476564062386661/picture/?type=large"
+    },
+    "categoryId" : "5968b5b9634221055dfd8c5b"
+}
+{
+    "_id" : "59b0f7061a60a60078d75d27",
+    "name" : "Sports Tee ",
+    "color" : "Floral ",
+    "description" : "A sports tee. Looks pretty cool on a tee shirt too. From adidas originals. It looks really nice with sneakers and a good fit jeans. ",
+    "credits" : NumberInt(1500),
+    "category" : {
+        "itemId" : "CLOTHES",
+        "itemName" : "CLOTHES"
+    },
+    "subcategories" : [
+        {
+            "itemId" : "CLOTHES",
+            "itemName" : "CLOTHES"
+        },
+        {
+            "itemId" : "WESTERN-WEAR",
+            "itemName" : "WESTERN WEAR"
+        },
+        {
+            "itemId" : "TOPS",
+            "itemName" : "TOPS"
+        },
+        {
+            "itemName" : "TEES",
+            "itemId" : "CLOTHES_WESTERN-WEAR_TOPS_TEES"
+        }
+    ],
+    "fit" : {
+        "itemId" : "TRUE-TO-SIZE",
+        "itemName" : "TRUE TO SIZE"
+    },
+    "brand" : {
+        "id" : "ADIDAS",
+        "name" : "ADIDAS"
+    },
+    "rules" : [
+        {
+            "itemId" : "PERMANENT-SWAP-ONLY",
+            "itemName" : "PERMANENT SWAP ONLY"
+        },
+        {
+            "itemId" : "TEMPORARY-SWAP-ONLY",
+            "itemName" : "TEMPORARY SWAP ONLY"
+        },
+        {
+            "itemId" : "MESSAGE-BEFORE-PROPOSING-SWAP",
+            "itemName" : "MESSAGE BEFORE PROPOSING SWAP"
+        }
+    ],
+    "condition" : {
+        "itemId" : "WORN-ONCE-OR-TWICE",
+        "itemName" : "WORN ONCE OR TWICE"
+    },
+    "images" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1468355370473_0_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures/1468355370474_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "size" : [
+        {
+            "itemId" : "WESTERN-M",
+            "itemName" : "M"
+        }
+    ],
+    "imagesSmall" : [
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1468355370473_0_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        },
+        {
+            "src" : "http://assets.thisforthat.mobi/pictures-small/1468355370474_1_.jpg",
+            "filter" : "none",
+            "isCover" : false
+        }
+    ],
+    "userId" : "WXmYcWXv8Q-97DrV",
+    "time_created" : 1468355291436.0,
+    "time_approved" : 1479273211988.0,
+    "time_featured" : 1468355291436.0,
+    "time_rejected" : 1479371777059.0,
+    "approved" : false,
+    "rejected" : true,
+    "featured" : false,
+    "status" : NumberInt(0),
+    "user_profile" : {
+        "avatar" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/18556958_1417721058270962_596492174567310916_n.jpg?oh=7d20c89409c87fe08c4045b9324da214&oe=5A354501",
+        "email" : "ankitanadig94@gmail.com",
+        "gender" : "female",
+        "location" : "Bangalore, India",
+        "name" : "Ankita Nadig",
+        "picture" : "http://graph.facebook.com/1476564062386661/picture/?type=large"
+    },
+    "curatedList" : [
+        "A5nQb5vguA9bw9Xtf"
+    ],
+    "rejected_reason_id" : "5",
+    "categoryId" : "5968b5b9634221055dfd8c7d"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "facets": [
+    {
+      "_id": "BRANDS",
+      "title": "Brands",
+      "values": [
+        {
+          "default": "ANASTASIA BEVERLY HILLS",
+          "id": "ANASTASIA-BEVERLY-HILLS"
+        },
+        {
+          "default": "AMWAY",
+          "id": "AMWAY"
+        },
+        {
+          "default": "AVON",
+          "id": "AVON"
+        },
+        {
+          "default": "ABHISHTI",
+          "id": "ABHISHTI"
+        },
+        {
+          "default": "ALAYNA",
+          "id": "ALAYNA"
+        },
+        {
+          "default": "ALBERTA FERRETTI",
+          "id": "ALBERTA-FERRETTI"
+        },
+        {
+          "default": "ALEXANDER WANG",
+          "id": "ALEXANDER-WANG"
+        },
+        {
+          "default": "ALEXANDER McQUEEN",
+          "id": "ALEXANDER-McQUEEN"
+        },
+        {
+          "default": "ACCESSORIZE",
+          "id": "ACCESSORIZE"
+        },
+        {
+          "default": "ALL SAINTS",
+          "id": "ALL-SAINTS"
+        },
+        {
+          "default": "AMERICAN EAGLE",
+          "id": "AMERICAN-EAGLE"
+        },
+        {
+          "default": "ASOS",
+          "id": "ASOS"
+        },
+        {
+          "default": "ARMANI",
+          "id": "ARMANI"
+        },
+        {
+          "default": "ARMANI EXCHANGE",
+          "id": "ARMANI-EXCHANGE"
+        },
+        {
+          "default": "ADIDAS",
+          "id": "ADIDAS"
+        },
+        {
+          "default": "ANNAMIKA KHANNA",
+          "id": "ANNAMIKA-KHANNA"
+        },
+        {
+          "default": "AKI NARULA",
+          "id": "AKI-NARULA"
+        },
+        {
+          "default": "AND",
+          "id": "AND"
+        },
+        {
+          "default": "ABERCROMBIE & FITCH",
+          "id": "ABERCROMBIE-&-FITCH"
+        },
+        {
+          "default": "ALDO",
+          "id": "ALDO"
+        },
+        {
+          "default": "ALDO ACCESSORIES",
+          "id": "ALDO-ACCESSORIES"
+        },
+        {
+          "default": "AMERICAN TOURISTER",
+          "id": "AMERICAN-TOURISTER"
+        },
+        {
+          "default": "ALLEN SOLLY",
+          "id": "ALLEN-SOLLY"
+        },
+        {
+          "default": "ANITA DONGRE",
+          "id": "ANITA-DONGRE"
+        },
+        {
+          "default": "ARROW",
+          "id": "ARROW"
+        },
+        {
+          "default": "ANOKHI",
+          "id": "ANOKHI"
+        },
+        {
+          "default": "BBLUNT",
+          "id": "BBLUNT"
+        },
+        {
+          "default": "BOURJOIS",
+          "id": "BOURJOIS"
+        },
+        {
+          "default": "BRAUN",
+          "id": "BRAUN"
+        },
+        {
+          "default": "BHARAT & DORRIS",
+          "id": "BHARAT-&-DORRIS"
+        },
+        {
+          "default": "BOBBI BROWN",
+          "id": "BOBBI-BROWN"
+        },
+        {
+          "default": "BOTTEGA VENETA",
+          "id": "BOTTEGA-VENETA"
+        },
+        {
+          "default": "BALMAIN",
+          "id": "BALMAIN"
+        },
+        {
+          "default": "BRIAN ATWOOD",
+          "id": "BRIAN-ATWOOD"
+        },
+        {
+          "default": "BECCA",
+          "id": "BECCA"
+        },
+        {
+          "default": "BVLGARI",
+          "id": "BVLGARI"
+        },
+        {
+          "default": "BENETTON",
+          "id": "BENETTON"
+        },
+        {
+          "default": "BEING HUMAN",
+          "id": "BEING-HUMAN"
+        },
+        {
+          "default": "BEBE",
+          "id": "BEBE"
+        },
+        {
+          "default": "BANANA REPUBLIC",
+          "id": "BANANA-REPUBLIC"
+        },
+        {
+          "default": "BURBERRY",
+          "id": "BURBERRY"
+        },
+        {
+          "default": "B*WITCH",
+          "id": "B*WITCH"
+        },
+        {
+          "default": "BAGGIT",
+          "id": "BAGGIT"
+        },
+        {
+          "default": "BATH & BODY WORKS",
+          "id": "BATH-&-BODY-WORKS"
+        },
+        {
+          "default": "BRUNO MANETTI",
+          "id": "BRUNO-MANETTI"
+        },
+        {
+          "default": "BOSSINI",
+          "id": "BOSSINI"
+        },
+        {
+          "default": "BIOTIQUE",
+          "id": "BIOTIQUE"
+        },
+        {
+          "default": "BARE ESSENTIALS",
+          "id": "BARE-ESSENTIALS"
+        },
+        {
+          "default": "BARE MINERALS",
+          "id": "BARE-MINERALS"
+        },
+        {
+          "default": "BEYONCE",
+          "id": "BEYONCE"
+        },
+        {
+          "default": "BRITNEY SPEARS",
+          "id": "BRITNEY-SPEARS"
+        },
+        {
+          "default": "BENEFIT",
+          "id": "BENEFIT"
+        },
+        {
+          "default": "CHLOE",
+          "id": "CHLOE"
+        },
+        {
+          "default": "COLORBAR",
+          "id": "COLORBAR"
+        },
+        {
+          "default": "CALVIN KLEIN Inc.",
+          "id": "CALVIN-KLEIN-Inc."
+        },
+        {
+          "default": "CHANEL",
+          "id": "CHANEL"
+        },
+        {
+          "default": "CHARLES & KEITH",
+          "id": "CHARLES-&-KEITH"
+        },
+        {
+          "default": "COACH",
+          "id": "COACH"
+        },
+        {
+          "default": "CAROLINA HERRERA",
+          "id": "CAROLINA-HERRERA"
+        },
+        {
+          "default": "CITIZEN",
+          "id": "CITIZEN"
+        },
+        {
+          "default": "CLARKS",
+          "id": "CLARKS"
+        },
+        {
+          "default": "CHEMISTRY",
+          "id": "CHEMISTRY"
+        },
+        {
+          "default": "CATWALK",
+          "id": "CATWALK"
+        },
+        {
+          "default": "CLARINS",
+          "id": "CLARINS"
+        },
+        {
+          "default": "CARLTON LONDON",
+          "id": "CARLTON-LONDON"
+        },
+        {
+          "default": "CONVERSE",
+          "id": "CONVERSE"
+        },
+        {
+          "default": "CLAIRE’S",
+          "id": "CLAIRE’S"
+        },
+        {
+          "default": "CHRISTIAN DIOR",
+          "id": "CHRISTIAN-DIOR"
+        },
+        {
+          "default": "CHRISTIAN AUDIGIER",
+          "id": "CHRISTIAN-AUDIGIER"
+        },
+        {
+          "default": "CHRISTIAN LOUBOUTIN",
+          "id": "CHRISTIAN-LOUBOUTIN"
+        },
+        {
+          "default": "CHRISTINA AGUILERA",
+          "id": "CHRISTINA-AGUILERA"
+        },
+        {
+          "default": "CROSS",
+          "id": "CROSS"
+        },
+        {
+          "default": "CRABTREE & EVELYN",
+          "id": "CRABTREE-&-EVELYN"
+        },
+        {
+          "default": "CLINIQUE",
+          "id": "CLINIQUE"
+        },
+        {
+          "default": "CARRERA",
+          "id": "CARRERA"
+        },
+        {
+          "default": "CROCS",
+          "id": "CROCS"
+        },
+        {
+          "default": "CEBE",
+          "id": "CEBE"
+        },
+        {
+          "default": "CARTIER",
+          "id": "CARTIER"
+        },
+        {
+          "default": "CHOPARD",
+          "id": "CHOPARD"
+        },
+        {
+          "default": "CHLOE",
+          "id": "CHLOE"
+        },
+        {
+          "default": "CHAMBOR",
+          "id": "CHAMBOR"
+        },
+        {
+          "default": "DA MILANO",
+          "id": "DA-MILANO"
+        },
+        {
+          "default": "DC",
+          "id": "DC"
+        },
+        {
+          "default": "DEBORAH",
+          "id": "DEBORAH"
+        },
+        {
+          "default": "DONE BY NONE",
+          "id": "DONE-BY-NONE"
+        },
+        {
+          "default": "DIOR",
+          "id": "DIOR"
+        },
+        {
+          "default": "DUCATI",
+          "id": "DUCATI"
+        },
+        {
+          "default": "DUNHILL",
+          "id": "DUNHILL"
+        },
+        {
+          "default": "DAVIDOFF",
+          "id": "DAVIDOFF"
+        },
+        {
+          "default": "DONNA KARAN",
+          "id": "DONNA-KARAN"
+        },
+        {
+          "default": "DKNY",
+          "id": "DKNY"
+        },
+        {
+          "default": "DIESEL",
+          "id": "DIESEL"
+        },
+        {
+          "default": "DOROTHY PERKINS",
+          "id": "DOROTHY-PERKINS"
+        },
+        {
+          "default": "DEBENHAMS",
+          "id": "DEBENHAMS"
+        },
+        {
+          "default": "DUNE",
+          "id": "DUNE"
+        },
+        {
+          "default": "DOLCE & GABBANA",
+          "id": "DOLCE-&-GABBANA"
+        },
+        {
+          "default": "DITA VON TEESE",
+          "id": "DITA-VON-TEESE"
+        },
+        {
+          "default": "ESCADA",
+          "id": "ESCADA"
+        },
+        {
+          "default": "ELIZABETH ARDEN",
+          "id": "ELIZABETH-ARDEN"
+        },
+        {
+          "default": "ELIZABETH TAYLOR",
+          "id": "ELIZABETH-TAYLOR"
+        },
+        {
+          "default": "ERMENEGILDO ZEGNA",
+          "id": "ERMENEGILDO-ZEGNA"
+        },
+        {
+          "default": "ED HARDY CLOTHING",
+          "id": "ED-HARDY-CLOTHING"
+        },
+        {
+          "default": "EMILIO PUCCI",
+          "id": "EMILIO-PUCCI"
+        },
+        {
+          "default": "ESPRIT",
+          "id": "ESPRIT"
+        },
+        {
+          "default": "ELIE SAAB",
+          "id": "ELIE-SAAB"
+        },
+        {
+          "default": "EMPORIO ARMANI",
+          "id": "EMPORIO-ARMANI"
+        },
+        {
+          "default": "ESTEE LAUDER",
+          "id": "ESTEE-LAUDER"
+        },
+        {
+          "default": "ELLE",
+          "id": "ELLE"
+        },
+        {
+          "default": "FENDI",
+          "id": "FENDI"
+        },
+        {
+          "default": "FASTRACK",
+          "id": "FASTRACK"
+        },
+        {
+          "default": "FERRARI",
+          "id": "FERRARI"
+        },
+        {
+          "default": "FLYING MACHINE",
+          "id": "FLYING-MACHINE"
+        },
+        {
+          "default": "FOREST ESSENTIALS",
+          "id": "FOREST-ESSENTIALS"
+        },
+        {
+          "default": "FACES",
+          "id": "FACES"
+        },
+        {
+          "default": "FCUK",
+          "id": "FCUK"
+        },
+        {
+          "default": "FOSSIL",
+          "id": "FOSSIL"
+        },
+        {
+          "default": "FRENCH CONNECTION",
+          "id": "FRENCH-CONNECTION"
+        },
+        {
+          "default": "FILA",
+          "id": "FILA"
+        },
+        {
+          "default": "FUBU",
+          "id": "FUBU"
+        },
+        {
+          "default": "FOREVER 21",
+          "id": "FOREVER-21"
+        },
+        {
+          "default": "FOREVER NEW",
+          "id": "FOREVER-NEW"
+        },
+        {
+          "default": "FARAH KHAN ALI",
+          "id": "FARAH-KHAN-ALI"
+        },
+        {
+          "default": "FALGUNI AND SHANE PEACOCK",
+          "id": "FALGUNI-AND-SHANE-PEACOCK"
+        },
+        {
+          "default": "FAB INDIA",
+          "id": "FAB-INDIA"
+        },
+        {
+          "default": "FIORELLI",
+          "id": "FIORELLI"
+        },
+        {
+          "default": "FREEDOME LONDON",
+          "id": "FREEDOME-LONDON"
+        },
+        {
+          "default": "GIVENCHY",
+          "id": "GIVENCHY"
+        },
+        {
+          "default": "GIUSEPPE ZANOTTI",
+          "id": "GIUSEPPE-ZANOTTI"
+        },
+        {
+          "default": "GUCCI",
+          "id": "GUCCI"
+        },
+        {
+          "default": "GAS",
+          "id": "GAS"
+        },
+        {
+          "default": "GILLETTE",
+          "id": "GILLETTE"
+        },
+        {
+          "default": "GANT",
+          "id": "GANT"
+        },
+        {
+          "default": "GAP Inc.",
+          "id": "GAP-Inc."
+        },
+        {
+          "default": "GUESS",
+          "id": "GUESS"
+        },
+        {
+          "default": "GIORDANO",
+          "id": "GIORDANO"
+        },
+        {
+          "default": "G STAR",
+          "id": "G-STAR"
+        },
+        {
+          "default": "GOYARD",
+          "id": "GOYARD"
+        },
+        {
+          "default": "GWEN STEFANI",
+          "id": "GWEN-STEFANI"
+        },
+        {
+          "default": "GEOX",
+          "id": "GEOX"
+        },
+        {
+          "default": "HERMES",
+          "id": "HERMES"
+        },
+        {
+          "default": "HUGO BOSS",
+          "id": "HUGO-BOSS"
+        },
+        {
+          "default": "HELIOS",
+          "id": "HELIOS"
+        },
+        {
+          "default": "HOLII",
+          "id": "HOLII"
+        },
+        {
+          "default": "HELLO KITTY",
+          "id": "HELLO-KITTY"
+        },
+        {
+          "default": "HIDESIGN",
+          "id": "HIDESIGN"
+        },
+        {
+          "default": "HUSH PUPPIES",
+          "id": "HUSH-PUPPIES"
+        },
+        {
+          "default": "HOBO",
+          "id": "HOBO"
+        },
+        {
+          "default": "HUDA BEAUTY",
+          "id": "HUDA-BEAUTY"
+        },
+        {
+          "default": "H&M",
+          "id": "H&M"
+        },
+        {
+          "default": "HOUSE OF FRASER",
+          "id": "HOUSE-OF-FRASER"
+        },
+        {
+          "default": "HARVEY NICHOLS",
+          "id": "HARVEY-NICHOLS"
+        },
+        {
+          "default": "HAVAIANAS",
+          "id": "HAVAIANAS"
+        },
+        {
+          "default": "HIMALYA",
+          "id": "HIMALYA"
+        },
+        {
+          "default": "ICONIC",
+          "id": "ICONIC"
+        },
+        {
+          "default": "ISSEY MIYAKE",
+          "id": "ISSEY-MIYAKE"
+        },
+        {
+          "default": "INGLOT",
+          "id": "INGLOT"
+        },
+        {
+          "default": "INVISIBOBBLE",
+          "id": "INVISIBOBBLE"
+        },
+        {
+          "default": "JEAN PAUL GAUTIER",
+          "id": "JEAN-PAUL-GAUTIER"
+        },
+        {
+          "default": "JUST CAVALLI",
+          "id": "JUST-CAVALLI"
+        },
+        {
+          "default": "JUICY COUTURE",
+          "id": "JUICY-COUTURE"
+        },
+        {
+          "default": "J. LO by JENNIFER LOPEZ",
+          "id": "J.-LO-by-JENNIFER-LOPEZ"
+        },
+        {
+          "default": "JIMMY CHOO",
+          "id": "JIMMY-CHOO"
+        },
+        {
+          "default": "J. CREW",
+          "id": "J.-CREW"
+        },
+        {
+          "default": "JC PENNY",
+          "id": "JC-PENNY"
+        },
+        {
+          "default": "KENZO",
+          "id": "KENZO"
+        },
+        {
+          "default": "KAMA AYURVEDA",
+          "id": "KAMA-AYURVEDA"
+        },
+        {
+          "default": "KHADI",
+          "id": "KHADI"
+        },
+        {
+          "default": "KAYA",
+          "id": "KAYA"
+        },
+        {
+          "default": "KIEHL’S",
+          "id": "KIEHL’S"
+        },
+        {
+          "default": "KERESTASE",
+          "id": "KERESTASE"
+        },
+        {
+          "default": "KENNETH COLE",
+          "id": "KENNETH-COLE"
+        },
+        {
+          "default": "KEDS",
+          "id": "KEDS"
+        },
+        {
+          "default": "KALPANA SAREES",
+          "id": "KALPANA-SAREES"
+        },
+        {
+          "default": "KARDASHIAN KOLLECTION",
+          "id": "KARDASHIAN-KOLLECTION"
+        },
+        {
+          "default": "KATE SPADE",
+          "id": "KATE-SPADE"
+        },
+        {
+          "default": "KATY PERRY",
+          "id": "KATY-PERRY"
+        },
+        {
+          "default": "LA SENZA",
+          "id": "LA-SENZA"
+        },
+        {
+          "default": "L’OREAL",
+          "id": "L’OREAL"
+        },
+        {
+          "default": "LANCOME",
+          "id": "LANCOME"
+        },
+        {
+          "default": "LANVIN",
+          "id": "LANVIN"
+        },
+        {
+          "default": "LAFFAIRE",
+          "id": "LAFFAIRE"
+        },
+        {
+          "default": "L’OCCITANE",
+          "id": "L’OCCITANE"
+        },
+        {
+          "default": "LEE",
+          "id": "LEE"
+        },
+        {
+          "default": "LAKME",
+          "id": "LAKME"
+        },
+        {
+          "default": "LACOSTE",
+          "id": "LACOSTE"
+        },
+        {
+          "default": "LAVIE",
+          "id": "LAVIE"
+        },
+        {
+          "default": "LEVI STRAUSS & CO.",
+          "id": "LEVI-STRAUSS-&-CO."
+        },
+        {
+          "default": "LOUIS VUITTON",
+          "id": "LOUIS-VUITTON"
+        },
+        {
+          "default": "LANCE BREMMER",
+          "id": "LANCE-BREMMER"
+        },
+        {
+          "default": "LONGINES",
+          "id": "LONGINES"
+        },
+        {
+          "default": "LORAC",
+          "id": "LORAC"
+        },
+        {
+          "default": "LOVE MOSCHINO",
+          "id": "LOVE-MOSCHINO"
+        },
+        {
+          "default": "LA GIRL",
+          "id": "LA-GIRL"
+        },
+        {
+          "default": "MISS SELFRIDGE",
+          "id": "MISS-SELFRIDGE"
+        },
+        {
+          "default": "MISSONI",
+          "id": "MISSONI"
+        },
+        {
+          "default": "MICHAEL KORS",
+          "id": "MICHAEL-KORS"
+        },
+        {
+          "default": "MIU MIU",
+          "id": "MIU-MIU"
+        },
+        {
+          "default": "MOSCHINO",
+          "id": "MOSCHINO"
+        },
+        {
+          "default": "MONT BLANC",
+          "id": "MONT-BLANC"
+        },
+        {
+          "default": "MANISH MALHOTRA",
+          "id": "MANISH-MALHOTRA"
+        },
+        {
+          "default": "MANISH ARORA",
+          "id": "MANISH-ARORA"
+        },
+        {
+          "default": "MARIAH CAREY",
+          "id": "MARIAH-CAREY"
+        },
+        {
+          "default": "MAX FACTOR",
+          "id": "MAX-FACTOR"
+        },
+        {
+          "default": "MAYBELLINE",
+          "id": "MAYBELLINE"
+        },
+        {
+          "default": "MEENA BAZAAR",
+          "id": "MEENA-BAZAAR"
+        },
+        {
+          "default": "MANGO",
+          "id": "MANGO"
+        },
+        {
+          "default": "MINERAL",
+          "id": "MINERAL"
+        },
+        {
+          "default": "MANGO TCH",
+          "id": "MANGO-TCH"
+        },
+        {
+          "default": "MARC JACOBS",
+          "id": "MARC-JACOBS"
+        },
+        {
+          "default": "MARC by MARC JACOBS",
+          "id": "MARC-by-MARC-JACOBS"
+        },
+        {
+          "default": "MAC",
+          "id": "MAC"
+        },
+        {
+          "default": "MARKS & SPENCER",
+          "id": "MARKS-&-SPENCER"
+        },
+        {
+          "default": "MAKEUP REVOLUTION LONDON",
+          "id": "MAKEUP-REVOLUTION-LONDON"
+        },
+        {
+          "default": "NASTY GAL",
+          "id": "NASTY-GAL"
+        },
+        {
+          "default": "NAKED",
+          "id": "NAKED"
+        },
+        {
+          "default": "NAUTICA",
+          "id": "NAUTICA"
+        },
+        {
+          "default": "NORDSTROM",
+          "id": "NORDSTROM"
+        },
+        {
+          "default": "NICKI MINAJ",
+          "id": "NICKI-MINAJ"
+        },
+        {
+          "default": "NINA RICCI",
+          "id": "NINA-RICCI"
+        },
+        {
+          "default": "NUN",
+          "id": "NUN"
+        },
+        {
+          "default": "NARS",
+          "id": "NARS"
+        },
+        {
+          "default": "NEUTROGENA",
+          "id": "NEUTROGENA"
+        },
+        {
+          "default": "NOTE",
+          "id": "NOTE"
+        },
+        {
+          "default": "NEXT",
+          "id": "NEXT"
+        },
+        {
+          "default": "NEW LOOK",
+          "id": "NEW-LOOK"
+        },
+        {
+          "default": "NINE WEST",
+          "id": "NINE-WEST"
+        },
+        {
+          "default": "NEETA LULLA",
+          "id": "NEETA-LULLA"
+        },
+        {
+          "default": "NIKE",
+          "id": "NIKE"
+        },
+        {
+          "default": "NEW BALANCE",
+          "id": "NEW-BALANCE"
+        },
+        {
+          "default": "NORTH FACE",
+          "id": "NORTH-FACE"
+        },
+        {
+          "default": "NIDA MAHMOOD",
+          "id": "NIDA-MAHMOOD"
+        },
+        {
+          "default": "NALLI’S",
+          "id": "NALLI’S"
+        },
+        {
+          "default": "NYKAA",
+          "id": "NYKAA"
+        },
+        {
+          "default": "NYX",
+          "id": "NYX"
+        },
+        {
+          "default": "ORIFLAME",
+          "id": "ORIFLAME"
+        },
+        {
+          "default": "ONLY",
+          "id": "ONLY"
+        },
+        {
+          "default": "OAKLEY",
+          "id": "OAKLEY"
+        },
+        {
+          "default": "OLAY",
+          "id": "OLAY"
+        },
+        {
+          "default": "OLD NAVY",
+          "id": "OLD-NAVY"
+        },
+        {
+          "default": "OMEGA",
+          "id": "OMEGA"
+        },
+        {
+          "default": "O LAYLA",
+          "id": "O-LAYLA"
+        },
+        {
+          "default": "OTHERS",
+          "id": "OTHERS"
+        },
+        {
+          "default": "POLAROID",
+          "id": "POLAROID"
+        },
+        {
+          "default": "PERRY ELLIS",
+          "id": "PERRY-ELLIS"
+        },
+        {
+          "default": "PARIS HILTON",
+          "id": "PARIS-HILTON"
+        },
+        {
+          "default": "PUMA",
+          "id": "PUMA"
+        },
+        {
+          "default": "PACO ROBANNE",
+          "id": "PACO-ROBANNE"
+        },
+        {
+          "default": "PARK AVENUE",
+          "id": "PARK-AVENUE"
+        },
+        {
+          "default": "PRADA",
+          "id": "PRADA"
+        },
+        {
+          "default": "PROMOD",
+          "id": "PROMOD"
+        },
+        {
+          "default": "PAUL SMITH",
+          "id": "PAUL-SMITH"
+        },
+        {
+          "default": "PERSOL",
+          "id": "PERSOL"
+        },
+        {
+          "default": "POLO RALPH LAUREN",
+          "id": "POLO-RALPH-LAUREN"
+        },
+        {
+          "default": "PLAYBOY",
+          "id": "PLAYBOY"
+        },
+        {
+          "default": "PEPE JEANS",
+          "id": "PEPE-JEANS"
+        },
+        {
+          "default": "POLICE",
+          "id": "POLICE"
+        },
+        {
+          "default": "PAC COSMETICS",
+          "id": "PAC-COSMETICS"
+        },
+        {
+          "default": "QUICK SILVER",
+          "id": "QUICK-SILVER"
+        },
+        {
+          "default": "REEBOK",
+          "id": "REEBOK"
+        },
+        {
+          "default": "ROHIT BAL",
+          "id": "ROHIT-BAL"
+        },
+        {
+          "default": "ROBERT RODRIGUEZ",
+          "id": "ROBERT-RODRIGUEZ"
+        },
+        {
+          "default": "RALPH LAUREN",
+          "id": "RALPH-LAUREN"
+        },
+        {
+          "default": "RALPH by RALPH LAUREN",
+          "id": "RALPH-by-RALPH-LAUREN"
+        },
+        {
+          "default": "ROCKPORT",
+          "id": "ROCKPORT"
+        },
+        {
+          "default": "RAYBAN",
+          "id": "RAYBAN"
+        },
+        {
+          "default": "ROBERTO CAVALLI",
+          "id": "ROBERTO-CAVALLI"
+        },
+        {
+          "default": "REAL TECHNIQUES",
+          "id": "REAL-TECHNIQUES"
+        },
+        {
+          "default": "ROLEX",
+          "id": "ROLEX"
+        },
+        {
+          "default": "RADO",
+          "id": "RADO"
+        },
+        {
+          "default": "REVLON",
+          "id": "REVLON"
+        },
+        {
+          "default": "RITU KUMAR",
+          "id": "RITU-KUMAR"
+        },
+        {
+          "default": "RIVER ISLAND",
+          "id": "RIVER-ISLAND"
+        },
+        {
+          "default": "RITU BERI",
+          "id": "RITU-BERI"
+        },
+        {
+          "default": "ROHIT GANDHI+ RAHUL KHANNA",
+          "id": "ROHIT-GANDHI+-RAHUL-KHANNA"
+        },
+        {
+          "default": "ROXY",
+          "id": "ROXY"
+        },
+        {
+          "default": "RIHANNA",
+          "id": "RIHANNA"
+        },
+        {
+          "default": "SALVATORE FERRAGAMO",
+          "id": "SALVATORE-FERRAGAMO"
+        },
+        {
+          "default": "SELFRIDGES",
+          "id": "SELFRIDGES"
+        },
+        {
+          "default": "SAMSONITE",
+          "id": "SAMSONITE"
+        },
+        {
+          "default": "SKECHERS",
+          "id": "SKECHERS"
+        },
+        {
+          "default": "STELLA McCARTNEY",
+          "id": "STELLA-McCARTNEY"
+        },
+        {
+          "default": "SWATCH",
+          "id": "SWATCH"
+        },
+        {
+          "default": "S. OLIVER",
+          "id": "S.-OLIVER"
+        },
+        {
+          "default": "SISLEY",
+          "id": "SISLEY"
+        },
+        {
+          "default": "SHIVAN & NARESH",
+          "id": "SHIVAN-&-NARESH"
+        },
+        {
+          "default": "SWAROVSKI",
+          "id": "SWAROVSKI"
+        },
+        {
+          "default": "SCULLERS",
+          "id": "SCULLERS"
+        },
+        {
+          "default": "SATYA PAUL",
+          "id": "SATYA-PAUL"
+        },
+        {
+          "default": "SABYASACHI",
+          "id": "SABYASACHI"
+        },
+        {
+          "default": "SEIKO",
+          "id": "SEIKO"
+        },
+        {
+          "default": "SWISS EAGLE",
+          "id": "SWISS-EAGLE"
+        },
+        {
+          "default": "STEVE MADDEN",
+          "id": "STEVE-MADDEN"
+        },
+        {
+          "default": "SUPERDRY",
+          "id": "SUPERDRY"
+        },
+        {
+          "default": "STUSSY",
+          "id": "STUSSY"
+        },
+        {
+          "default": "SMALL INDIE BRANDS",
+          "id": "SMALL-INDIE-BRANDS"
+        },
+        {
+          "default": "SPEEDO",
+          "id": "SPEEDO"
+        },
+        {
+          "default": "SKYBAGS",
+          "id": "SKYBAGS"
+        },
+        {
+          "default": "SEPHORA",
+          "id": "SEPHORA"
+        },
+        {
+          "default": "SELENA GOMEZ",
+          "id": "SELENA-GOMEZ"
+        },
+        {
+          "default": "SHISEIDO",
+          "id": "SHISEIDO"
+        },
+        {
+          "default": "SUPER DRUG",
+          "id": "SUPER-DRUG"
+        },
+        {
+          "default": "SUGAR",
+          "id": "SUGAR"
+        },
+        {
+          "default": "SCHWARZKPOF",
+          "id": "SCHWARZKPOF"
+        },
+        {
+          "default": "TITAN",
+          "id": "TITAN"
+        },
+        {
+          "default": "TITAN RAGA",
+          "id": "TITAN-RAGA"
+        },
+        {
+          "default": "TIMEX",
+          "id": "TIMEX"
+        },
+        {
+          "default": "TISSOT",
+          "id": "TISSOT"
+        },
+        {
+          "default": "TED BAKER",
+          "id": "TED-BAKER"
+        },
+        {
+          "default": "THE BODY SHOP",
+          "id": "THE-BODY-SHOP"
+        },
+        {
+          "default": "TONI & GUY",
+          "id": "TONI-&-GUY"
+        },
+        {
+          "default": "TARUN TAHILIANI",
+          "id": "TARUN-TAHILIANI"
+        },
+        {
+          "default": "TRESEMME",
+          "id": "TRESEMME"
+        },
+        {
+          "default": "TOPSHOP",
+          "id": "TOPSHOP"
+        },
+        {
+          "default": "TOPMAN",
+          "id": "TOPMAN"
+        },
+        {
+          "default": "TOMMY HILFIGER",
+          "id": "TOMMY-HILFIGER"
+        },
+        {
+          "default": "TIMBERLAND",
+          "id": "TIMBERLAND"
+        },
+        {
+          "default": "THE NORTH FACE",
+          "id": "THE-NORTH-FACE"
+        },
+        {
+          "default": "TORY BURCH",
+          "id": "TORY-BURCH"
+        },
+        {
+          "default": "TOD’S",
+          "id": "TOD’S"
+        },
+        {
+          "default": "TIFFANY & CO.",
+          "id": "TIFFANY-&-CO."
+        },
+        {
+          "default": "TAG HEUER",
+          "id": "TAG-HEUER"
+        },
+        {
+          "default": "TAYLOR SWIFT",
+          "id": "TAYLOR-SWIFT"
+        },
+        {
+          "default": "TOMS",
+          "id": "TOMS"
+        },
+        {
+          "default": "TOYWATCH",
+          "id": "TOYWATCH"
+        },
+        {
+          "default": "URBAN OUTFITTERS",
+          "id": "URBAN-OUTFITTERS"
+        },
+        {
+          "default": "URBAN DECAY",
+          "id": "URBAN-DECAY"
+        },
+        {
+          "default": "UNIQLO",
+          "id": "UNIQLO"
+        },
+        {
+          "default": "UCLA",
+          "id": "UCLA"
+        },
+        {
+          "default": "UNITED COLOURS OF BENETTON",
+          "id": "UNITED-COLOURS-OF-BENETTON"
+        },
+        {
+          "default": "US POLO ASS.",
+          "id": "US-POLO-ASS."
+        },
+        {
+          "default": "VALENTINO",
+          "id": "VALENTINO"
+        },
+        {
+          "default": "VERSACE",
+          "id": "VERSACE"
+        },
+        {
+          "default": "VERA WANG",
+          "id": "VERA-WANG"
+        },
+        {
+          "default": "VIKRAM PHADNIS",
+          "id": "VIKRAM-PHADNIS"
+        },
+        {
+          "default": "VIVIENNE WESTWOOD",
+          "id": "VIVIENNE-WESTWOOD"
+        },
+        {
+          "default": "VICTORIA BECKHAM",
+          "id": "VICTORIA-BECKHAM"
+        },
+        {
+          "default": "VICTORIA’S SECRET",
+          "id": "VICTORIA’S-SECRET"
+        },
+        {
+          "default": "VANA VIDHI",
+          "id": "VANA-VIDHI"
+        },
+        {
+          "default": "VON DUTCH ORIGINALS",
+          "id": "VON-DUTCH-ORIGINALS"
+        },
+        {
+          "default": "VEDIC LINE",
+          "id": "VEDIC-LINE"
+        },
+        {
+          "default": "VERO MODA",
+          "id": "VERO-MODA"
+        },
+        {
+          "default": "VOGUE EYEWEAR",
+          "id": "VOGUE-EYEWEAR"
+        },
+        {
+          "default": "VANS",
+          "id": "VANS"
+        },
+        {
+          "default": "VINTAGE",
+          "id": "VINTAGE"
+        },
+        {
+          "default": "VICTORINOX",
+          "id": "VICTORINOX"
+        },
+        {
+          "default": "WRANGLER",
+          "id": "WRANGLER"
+        },
+        {
+          "default": "WIRED BY SEIKO",
+          "id": "WIRED-BY-SEIKO"
+        },
+        {
+          "default": "WOODLAND",
+          "id": "WOODLAND"
+        },
+        {
+          "default": "YSL",
+          "id": "YSL"
+        },
+        {
+          "default": "YVES SAINT LAURENT",
+          "id": "YVES-SAINT-LAURENT"
+        },
+        {
+          "default": "ZARA",
+          "id": "ZARA"
+        }
+      ],
+      "categories": [],
+      "appearance": "BRANDS_LIST"
+    },
+    {
+      "_id": "BUST_SIZE",
+      "title": "Bust Size",
+      "values": [
+        {
+          "default": 33,
+          "id": "33"
+        },
+        {
+          "default": 34,
+          "id": "34"
+        },
+        {
+          "default": 35.5,
+          "id": "35.5"
+        },
+        {
+          "default": 37,
+          "id": "37 "
+        },
+        {
+          "default": 39,
+          "id": "39 "
+        },
+        {
+          "default": 41,
+          "id": "41 "
+        },
+        {
+          "default": 43,
+          "id": "43"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c8f",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c7d",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c80",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c82",
+        "5968b5b9634221055dfd8c83",
+        "5968b5b9634221055dfd8c84",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c40"
+      ],
+      "appearance": "SIZE_LIST"
+    },
+    {
+      "_id": "COLORS",
+      "title": "Color",
+      "values": [
+        {
+          "id": "BLACK",
+          "title": "Black ",
+          "default": "#000000"
+        },
+        {
+          "id": "WHITE",
+          "title": "White ",
+          "default": "#FFFFFF"
+        },
+        {
+          "id": "BLUE",
+          "title": "Blue",
+          "default": "#2196F3"
+        },
+        {
+          "id": "NAVY",
+          "title": "Navy",
+          "default": "#000080"
+        },
+        {
+          "id": "NAVYBLUE",
+          "title": "Navy Blue ",
+          "default": "#0a0f44"
+        },
+        {
+          "id": "PINK",
+          "title": "Pink",
+          "default": "#E91E63"
+        },
+        {
+          "id": "RED",
+          "title": "Red ",
+          "default": "#F44336"
+        },
+        {
+          "id": "GREEN",
+          "title": "Green ",
+          "default": "#4CAF50"
+        },
+        {
+          "id": "GREY",
+          "title": "Grey",
+          "default": "#9E9E9E"
+        },
+        {
+          "id": "MAROON",
+          "title": "Maroon",
+          "default": "#b03060"
+        },
+        {
+          "id": "BEIGE",
+          "title": "Beige ",
+          "default": "#f5f5dc"
+        },
+        {
+          "id": "MULTICOLOUR",
+          "title": "Multi Colour ",
+          "default": ""
+        },
+        {
+          "id": "OFFWHITE",
+          "title": "Off White",
+          "default": "#fefdfb"
+        },
+        {
+          "id": "PEACH",
+          "title": "Peach ",
+          "default": "#FFDAB9"
+        },
+        {
+          "id": "YELLOW",
+          "title": "Yellow",
+          "default": "#FFEB3B"
+        },
+        {
+          "id": "ORANGE",
+          "title": "Orange",
+          "default": "#FF9800"
+        },
+        {
+          "id": "BROWN",
+          "title": "Brown ",
+          "default": "#795548"
+        },
+        {
+          "id": "PURPLE",
+          "title": "Purple",
+          "default": "#9C27B0"
+        },
+        {
+          "id": "CORAL",
+          "title": "Coral ",
+          "default": "#ff7f50"
+        },
+        {
+          "id": "OLIVE",
+          "title": "Olive ",
+          "default": "#556b2f"
+        },
+        {
+          "id": "CREAM",
+          "title": "Cream ",
+          "default": "#fffdd0"
+        },
+        {
+          "id": "BURGENDY",
+          "title": "Burgendy",
+          "default": "#800020"
+        },
+        {
+          "id": "RUST",
+          "title": "Rust",
+          "default": "#B7410E"
+        },
+        {
+          "id": "MUSTARD",
+          "title": "Mustard ",
+          "default": "#FFDB58"
+        },
+        {
+          "id": "CHARCOAL",
+          "title": "Charcoal",
+          "default": "#36454f"
+        },
+        {
+          "id": "TEAL",
+          "title": "Teal ",
+          "default": "#9688"
+        },
+        {
+          "id": "GREYMELANGE",
+          "title": "Grey Melange ",
+          "default": "#808080"
+        },
+        {
+          "id": "SEAGREEN",
+          "title": "Sea Green ",
+          "default": "#54FF9F"
+        },
+        {
+          "id": "TAUPE",
+          "title": "Taupe ",
+          "default": "#b38b6d"
+        },
+        {
+          "id": "GOLD",
+          "title": "Gold",
+          "default": "#DAA520"
+        },
+        {
+          "id": "TURQUOISE",
+          "title": "Turquoise ",
+          "default": "#40E0D0"
+        },
+        {
+          "id": "MAGENTA",
+          "title": "Magenta ",
+          "default": "#FF00FF"
+        },
+        {
+          "id": "TURQUOISEBLUE",
+          "title": "Turquoise blue",
+          "default": "#00CED1"
+        },
+        {
+          "id": "LAVENDER",
+          "title": "Lavender",
+          "default": "#E6E6FA"
+        },
+        {
+          "id": "LIMEGREEN",
+          "title": "Lime Green",
+          "default": "#32CD32"
+        },
+        {
+          "id": "NUDE",
+          "title": "Nude",
+          "default": "#f2c6aa"
+        },
+        {
+          "id": "MAUVE",
+          "title": "Mauve ",
+          "default": "#b784a7"
+        },
+        {
+          "id": "SILVER",
+          "title": "Silver",
+          "default": "#C0C0C0"
+        },
+        {
+          "id": "KHAKI",
+          "title": "Khaki ",
+          "default": "#C3B091"
+        },
+        {
+          "id": "COFFEEBROWN",
+          "title": "Coffee Brown",
+          "default": "#593C1F"
+        },
+        {
+          "id": "GUNMETAL",
+          "title": "Gunmetal",
+          "default": "#2C3539"
+        },
+        {
+          "id": "BRONZE",
+          "title": "Bronze",
+          "default": "#cd7f32"
+        },
+        {
+          "id": "METALLIC",
+          "title": "Metallic",
+          "default": "#D4AF37"
+        },
+        {
+          "id": "FLOUORESCENTGREEN",
+          "title": "Flouorescent Green",
+          "default": "#32CD32"
+        },
+        {
+          "id": "COPPER",
+          "title": "Copper",
+          "default": "#b87333"
+        }
+      ],
+      "categories": [],
+      "appearance": "COLORS_SWATCH"
+    },
+    {
+      "_id": "DRESS_SIZE",
+      "title": "Dress Size",
+      "values": [
+        {
+          "default": "XS",
+          "id": "XS"
+        },
+        {
+          "default": "S",
+          "id": "S"
+        },
+        {
+          "default": "M",
+          "id": "M"
+        },
+        {
+          "default": "L",
+          "id": "L"
+        },
+        {
+          "default": "XL",
+          "id": "XL"
+        },
+        {
+          "default": "XXL",
+          "id": "XXL"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c8f",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c7d",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c80",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c82",
+        "5968b5b9634221055dfd8c83",
+        "5968b5b9634221055dfd8c84",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c40"
+      ],
+      "appearance": "SIZE_LIST"
+    },
+    {
+      "_id": "FIT",
+      "title": "Fit",
+      "values": [
+        {
+          "default": "True To Size",
+          "id": "1"
+        },
+        {
+          "default": "Runs Small",
+          "id": "2"
+        },
+        {
+          "default": "Runs Big",
+          "id": "3"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c6c",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c67",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c6d",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c6a",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c5e",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c66",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c6b",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c40",
+        "5968b5b9634221055dfd8c60",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c63",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8f",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b8634221055dfd8c2d"
+      ],
+      "appearance": "FIT_LIST"
+    },
+    {
+      "_id": "HIP_SIZE",
+      "title": "Hips",
+      "values": [
+        {
+          "default": 34,
+          "id": "34"
+        },
+        {
+          "default": 35,
+          "id": "35"
+        },
+        {
+          "default": 36,
+          "id": "36"
+        },
+        {
+          "default": 37,
+          "id": "37"
+        },
+        {
+          "default": 38,
+          "id": "38"
+        },
+        {
+          "default": 39,
+          "id": "39"
+        },
+        {
+          "default": 41,
+          "id": "41"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c40"
+      ],
+      "appearance": "SIZE_LIST"
+    },
+    {
+      "_id": "LOWER_WAIST_SIZE",
+      "title": "Lower Waist",
+      "values": [
+        {
+          "default": 26,
+          "id": "26"
+        },
+        {
+          "default": 27,
+          "id": "27"
+        },
+        {
+          "default": 28,
+          "id": "28"
+        },
+        {
+          "default": 29,
+          "id": "29"
+        },
+        {
+          "default": 30,
+          "id": "30"
+        },
+        {
+          "default": 32,
+          "id": "32"
+        },
+        {
+          "default": 34,
+          "id": "34"
+        },
+        {
+          "default": 36,
+          "id": "36"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c40"
+      ],
+      "appearance": "SIZE_LIST"
+    },
+    {
+      "_id": "SHOE_SIZE",
+      "title": "Shoe Size",
+      "values": [
+        {
+          "id": null,
+          "default": null,
+          "children": [
+            {
+              "_id": "UK_INDIAN",
+              "title": "Uk / Indian",
+              "values": [
+                {
+                  "default": "3",
+                  "id": "3"
+                },
+                {
+                  "default": "4",
+                  "id": "4"
+                },
+                {
+                  "default": "4.5",
+                  "id": "4.5"
+                },
+                {
+                  "default": "5",
+                  "id": "5"
+                },
+                {
+                  "default": "5.5",
+                  "id": "5.5"
+                },
+                {
+                  "default": "6",
+                  "id": "6"
+                },
+                {
+                  "default": "6.5",
+                  "id": "6.5"
+                },
+                {
+                  "default": "7",
+                  "id": "7"
+                },
+                {
+                  "default": "8",
+                  "id": "8"
+                },
+                {
+                  "default": "9",
+                  "id": "9"
+                }
+              ]
+            },
+            {
+              "_id": "EURO",
+              "title": "Euro",
+              "values": [
+                {
+                  "default": "36",
+                  "id": "36"
+                },
+                {
+                  "default": "37",
+                  "id": "37"
+                },
+                {
+                  "default": "37.5",
+                  "id": "37.5"
+                },
+                {
+                  "default": "38",
+                  "id": "38"
+                },
+                {
+                  "default": "38.5",
+                  "id": "38.5"
+                },
+                {
+                  "default": "39",
+                  "id": "39"
+                },
+                {
+                  "default": "39.5",
+                  "id": "39.5"
+                },
+                {
+                  "default": "40",
+                  "id": "40"
+                },
+                {
+                  "default": "41",
+                  "id": "41"
+                },
+                {
+                  "default": "42",
+                  "id": "42"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c55",
+        "5968b5b9634221055dfd8c50",
+        "5968b5b9634221055dfd8c4b",
+        "5968b5b9634221055dfd8c52",
+        "5968b5b9634221055dfd8c4c",
+        "5968b5b9634221055dfd8c4d",
+        "5968b5b9634221055dfd8c4e",
+        "5968b5b9634221055dfd8c54",
+        "5968b5b9634221055dfd8c53",
+        "5968b5b9634221055dfd8c51",
+        "5968b5b9634221055dfd8c4f"
+      ],
+      "appearance": "SIZE_LIST"
+    },
+    {
+      "_id": "SWAPTYPE",
+      "title": "Swap Type",
+      "values": [
+        {
+          "default": "Temporary Swap",
+          "id": "1"
+        },
+        {
+          "default": "Permanent Swap",
+          "id": "2"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c6c",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c67",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c6d",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c6a",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c5e",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c66",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c6b",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c40",
+        "5968b5b9634221055dfd8c60",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c63",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8f",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b8634221055dfd8c2b",
+        "5968b5b8634221055dfd8c2c",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b8634221055dfd8c2e",
+        "5968b5b8634221055dfd8c2f",
+        "5968b5b8634221055dfd8c30",
+        "5968b5b8634221055dfd8c32",
+        "5968b5b8634221055dfd8c31",
+        "5968b5b8634221055dfd8c33",
+        "5968b5b8634221055dfd8c34",
+        "5968b5b8634221055dfd8c36",
+        "5968b5b8634221055dfd8c3b",
+        "5968b5b9634221055dfd8c40",
+        "5968b5b9634221055dfd8c45",
+        "5968b5b9634221055dfd8c4a",
+        "5968b5b9634221055dfd8c4f",
+        "5968b5b9634221055dfd8c54",
+        "5968b5b9634221055dfd8c59",
+        "5968b5b8634221055dfd8c35",
+        "5968b5b8634221055dfd8c3a",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c44",
+        "5968b5b9634221055dfd8c49",
+        "5968b5b9634221055dfd8c4e",
+        "5968b5b9634221055dfd8c53",
+        "5968b5b9634221055dfd8c58",
+        "5968b5b8634221055dfd8c37",
+        "5968b5b8634221055dfd8c3e",
+        "5968b5b9634221055dfd8c43",
+        "5968b5b9634221055dfd8c48",
+        "5968b5b9634221055dfd8c4d",
+        "5968b5b9634221055dfd8c52",
+        "5968b5b9634221055dfd8c57",
+        "5968b5b8634221055dfd8c38",
+        "5968b5b8634221055dfd8c3d",
+        "5968b5b9634221055dfd8c42",
+        "5968b5b9634221055dfd8c47",
+        "5968b5b9634221055dfd8c4c",
+        "5968b5b9634221055dfd8c51",
+        "5968b5b9634221055dfd8c56",
+        "5968b5b8634221055dfd8c39",
+        "5968b5b8634221055dfd8c3c",
+        "5968b5b9634221055dfd8c41",
+        "5968b5b9634221055dfd8c46",
+        "5968b5b9634221055dfd8c4b",
+        "5968b5b9634221055dfd8c50",
+        "5968b5b9634221055dfd8c55",
+        "5968b5b9634221055dfd8c5a",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c60",
+        "5968b5b9634221055dfd8c6a",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c63",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c6d",
+        "5968b5b9634221055dfd8c5e",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c67",
+        "5968b5b9634221055dfd8c6c",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c66",
+        "5968b5b9634221055dfd8c6b",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c84",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b9634221055dfd8c83",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c7d",
+        "5968b5b9634221055dfd8c82",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c80",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8f"
+      ],
+      "appearance": "SWAP_TYPE_LIST"
+    },
+    {
+      "_id": "SWAPWITH",
+      "title": "Swap With",
+      "values": [
+        {
+          "default": "Item Only",
+          "id": "1"
+        },
+        {
+          "default": "Credits Only",
+          "id": "2"
+        },
+        {
+          "default": "Both Item & Credits",
+          "id": "3"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c6c",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c67",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c6d",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c6a",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c5e",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c66",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c6b",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c40",
+        "5968b5b9634221055dfd8c60",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c63",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8f",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b8634221055dfd8c2b",
+        "5968b5b8634221055dfd8c2c",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b8634221055dfd8c2e",
+        "5968b5b8634221055dfd8c2f",
+        "5968b5b8634221055dfd8c30",
+        "5968b5b8634221055dfd8c32",
+        "5968b5b8634221055dfd8c31",
+        "5968b5b8634221055dfd8c33",
+        "5968b5b8634221055dfd8c34",
+        "5968b5b8634221055dfd8c36",
+        "5968b5b8634221055dfd8c3b",
+        "5968b5b9634221055dfd8c40",
+        "5968b5b9634221055dfd8c45",
+        "5968b5b9634221055dfd8c4a",
+        "5968b5b9634221055dfd8c4f",
+        "5968b5b9634221055dfd8c54",
+        "5968b5b9634221055dfd8c59",
+        "5968b5b8634221055dfd8c35",
+        "5968b5b8634221055dfd8c3a",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c44",
+        "5968b5b9634221055dfd8c49",
+        "5968b5b9634221055dfd8c4e",
+        "5968b5b9634221055dfd8c53",
+        "5968b5b9634221055dfd8c58",
+        "5968b5b8634221055dfd8c37",
+        "5968b5b8634221055dfd8c3e",
+        "5968b5b9634221055dfd8c43",
+        "5968b5b9634221055dfd8c48",
+        "5968b5b9634221055dfd8c4d",
+        "5968b5b9634221055dfd8c52",
+        "5968b5b9634221055dfd8c57",
+        "5968b5b8634221055dfd8c38",
+        "5968b5b8634221055dfd8c3d",
+        "5968b5b9634221055dfd8c42",
+        "5968b5b9634221055dfd8c47",
+        "5968b5b9634221055dfd8c4c",
+        "5968b5b9634221055dfd8c51",
+        "5968b5b9634221055dfd8c56",
+        "5968b5b8634221055dfd8c39",
+        "5968b5b8634221055dfd8c3c",
+        "5968b5b9634221055dfd8c41",
+        "5968b5b9634221055dfd8c46",
+        "5968b5b9634221055dfd8c4b",
+        "5968b5b9634221055dfd8c50",
+        "5968b5b9634221055dfd8c55",
+        "5968b5b9634221055dfd8c5a",
+        "5968b5b9634221055dfd8c61",
+        "5968b5b9634221055dfd8c5b",
+        "5968b5b9634221055dfd8c60",
+        "5968b5b9634221055dfd8c6a",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c5f",
+        "5968b5b9634221055dfd8c64",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c63",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c6d",
+        "5968b5b9634221055dfd8c5e",
+        "5968b5b9634221055dfd8c62",
+        "5968b5b9634221055dfd8c67",
+        "5968b5b9634221055dfd8c6c",
+        "5968b5b9634221055dfd8c65",
+        "5968b5b9634221055dfd8c66",
+        "5968b5b9634221055dfd8c6b",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c7c",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c7b",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c7a",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b9634221055dfd8c84",
+        "5968b5b9634221055dfd8c89",
+        "5968b5b9634221055dfd8c8e",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c7e",
+        "5968b5b9634221055dfd8c83",
+        "5968b5b9634221055dfd8c88",
+        "5968b5b9634221055dfd8c8d",
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c7d",
+        "5968b5b9634221055dfd8c82",
+        "5968b5b9634221055dfd8c87",
+        "5968b5b9634221055dfd8c8c",
+        "5968b5b9634221055dfd8c80",
+        "5968b5b9634221055dfd8c81",
+        "5968b5b9634221055dfd8c86",
+        "5968b5b9634221055dfd8c8b",
+        "5968b5b9634221055dfd8c85",
+        "5968b5b9634221055dfd8c8a",
+        "5968b5b9634221055dfd8c8f"
+      ],
+      "appearance": "SWAP_WITH_LIST"
+    },
+    {
+      "_id": "UPPER_WAIST_SIZE",
+      "title": "Upper Waist",
+      "values": [
+        {
+          "default": 24,
+          "id": "24"
+        },
+        {
+          "default": 25,
+          "id": "25"
+        },
+        {
+          "default": 26,
+          "id": "26"
+        },
+        {
+          "default": 27,
+          "id": "27"
+        },
+        {
+          "default": 28,
+          "id": "28"
+        },
+        {
+          "default": 29,
+          "id": "29"
+        },
+        {
+          "default": 30,
+          "id": "30"
+        },
+        {
+          "default": 32,
+          "id": "32"
+        },
+        {
+          "default": 34,
+          "id": "34"
+        },
+        {
+          "default": 36,
+          "id": "36"
+        }
+      ],
+      "categories": [
+        "5968b5b9634221055dfd8c5c",
+        "5968b5b9634221055dfd8c5d",
+        "5968b5b9634221055dfd8c68",
+        "5968b5b9634221055dfd8c69",
+        "5968b5b9634221055dfd8c78",
+        "5968b5b9634221055dfd8c79",
+        "5968b5b9634221055dfd8c75",
+        "5968b5b9634221055dfd8c76",
+        "5968b5b9634221055dfd8c77",
+        "5968b5b9634221055dfd8c73",
+        "5968b5b9634221055dfd8c6f",
+        "5968b5b9634221055dfd8c70",
+        "5968b5b9634221055dfd8c6e",
+        "5968b5b9634221055dfd8c71",
+        "5968b5b9634221055dfd8c74",
+        "5968b5b9634221055dfd8c72",
+        "5968b5b9634221055dfd8c7f",
+        "5968b5b8634221055dfd8c2d",
+        "5968b5b9634221055dfd8c3f",
+        "5968b5b9634221055dfd8c40"
+      ],
+      "appearance": "SIZE_LIST"
+    }
+  ],
+  "categories": [
+    {
+      "_id": "5968b5b8634221055dfd8c2b",
+      "path": "",
+      "title": "Accessories",
+      "fullWidthImage": "http://54.254.175.129:9000/uploads/1504764009608.png",
+      "halfWidthImage": "http://54.254.175.129:9000/uploads/1504764009806.jpg",
+      "__v": 0,
+      "_w": 0,
+      "parentId": null,
+      "depth": 0,
+      "id": "5968b5b8634221055dfd8c2b",
+      "children": [
+        {
+          "_id": "5968b5b8634221055dfd8c30",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Bracelets",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c30"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c32",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Earrings",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c32"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c31",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Bangles",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c31"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c33",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Necklaces",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c33"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c34",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Rings",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c34"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c36",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Hats",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c36"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c3b",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Belts",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c3b"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c35",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Hair accessories",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c35"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c3a",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Sunglasses",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c3a"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c37",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Scarves",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c37"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c3e",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Other",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c3e"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c38",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Stoles",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c38"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c3d",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Cases and sleeves",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c3d"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c39",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Watches",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c39"
+        },
+        {
+          "_id": "5968b5b8634221055dfd8c3c",
+          "path": ",5968b5b8634221055dfd8c2b",
+          "title": "Anklets",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2b",
+          "depth": 1,
+          "id": "5968b5b8634221055dfd8c3c"
+        }
+      ]
+    },
+    {
+      "_id": "5968b5b8634221055dfd8c2c",
+      "path": "",
+      "title": "Bags",
+      "fullWidthImage": "http://54.254.175.129:9000/uploads/1504764094370.png",
+      "halfWidthImage": "http://54.254.175.129:9000/uploads/1504764094383.png",
+      "__v": 0,
+      "_w": 0,
+      "parentId": null,
+      "depth": 0,
+      "id": "5968b5b8634221055dfd8c2c",
+      "children": [
+        {
+          "_id": "5968b5b9634221055dfd8c4a",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Others",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4a"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c44",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Sling Bags",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c44"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c49",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Wallets",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c49"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c43",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Totes",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c43"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c48",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Gym Bags",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c48"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c42",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Clutches and Potlis",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c42"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c47",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Laptop Bags",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c47"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c41",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Hand Bags",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c41"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c46",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Travel Bags",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c46"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c45",
+          "path": ",5968b5b8634221055dfd8c2c",
+          "title": "Back Packs",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2c",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c45"
+        }
+      ]
+    },
+    {
+      "_id": "5968b5b8634221055dfd8c2d",
+      "path": "",
+      "title": "Clothes",
+      "fullWidthImage": "http://54.254.175.129:9000/uploads/1504764170658.png",
+      "halfWidthImage": "http://54.254.175.129:9000/uploads/1504764170673.png",
+      "__v": 0,
+      "_w": 0,
+      "parentId": null,
+      "depth": 0,
+      "id": "5968b5b8634221055dfd8c2d",
+      "children": [
+        {
+          "_id": "5968b5b9634221055dfd8c40",
+          "path": ",5968b5b8634221055dfd8c2d",
+          "title": "Western Wear",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2d",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c40",
+          "children": [
+            {
+              "_id": "5968b5b9634221055dfd8c66",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Jackets and Coats",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c66",
+              "children": [
+                {
+                  "_id": "5968b5b9634221055dfd8c8b",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Waist Coats",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8b"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c89",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Leather",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c89"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c8e",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Gym Wear",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8e"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c88",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Fur/Faux",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c88"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c8d",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Cheaters",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8d"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c87",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Denim",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c87"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c8c",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Shrugs",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8c"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c86",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Blazers",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c86"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c8a",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Over Coats",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8a"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c8f",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c66",
+                  "title": "Quilted",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c66",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c8f"
+                }
+              ]
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c6c",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Lowers",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c6c",
+              "children": [
+                {
+                  "_id": "5968b5b9634221055dfd8c73",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Pyjamas",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c73"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c74",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Others",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c74"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c6f",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Track Pants",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c6f"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c70",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Trousers",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c70"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c6e",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Jeans",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c6e"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c71",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Tights",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c71"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c72",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6c",
+                  "title": "Jump Suits and Rompers",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6c",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c72"
+                }
+              ]
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c67",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Tops",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c67",
+              "children": [
+                {
+                  "_id": "5968b5b9634221055dfd8c7d",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Tees",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7d",
+                  "children": [
+                              {
+                                "_id": "5968b5b9634221055dfd8c62",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Bridal Wear",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c62"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c61",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Suits",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c61"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c5e",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Dupatta",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c5e"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c63",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Shawls",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c63"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c5c",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Salwars and Churidaars",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c5c"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c64",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Others",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c64"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c5f",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Lehngas",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c5f"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c5d",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Blouses/Cholis",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c5d"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c60",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Sarees",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c60"
+                              },
+                              {
+                                "_id": "5968b5b9634221055dfd8c5b",
+                                "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+                                "title": "Kurtis",
+                                "__v": 0,
+                                "_w": 0,
+                                "parentId": "5968b5b9634221055dfd8c3f",
+                                "depth": 2,
+                                "id": "5968b5b9634221055dfd8c5b"
+                              }
+                            ]
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c7c",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Tanks",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7c"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c7b",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Long Sleeves",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7b"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c7a",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Crop tops",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7a"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c7f",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Others",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7f"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c7e",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c67",
+                  "title": "Shirts/Blouses",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c67",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c7e"
+                }
+              ]
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c6d",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Other",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c6d"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c68",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Skirts",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c68"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c69",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Shorts",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c69"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c6a",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Beachwear",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c6a",
+              "children": [
+                {
+                  "_id": "5968b5b9634221055dfd8c78",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6a",
+                  "title": "Sarongs",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6a",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c78"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c79",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6a",
+                  "title": "Others",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6a",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c79"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c75",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6a",
+                  "title": "Bikinis",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6a",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c75"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c76",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6a",
+                  "title": "Tankinis",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6a",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c76"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c77",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6a",
+                  "title": "Maillots",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6a",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c77"
+                }
+              ]
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c6b",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Woolens",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c6b",
+              "children": [
+                {
+                  "_id": "5968b5b9634221055dfd8c85",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Others",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c85"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c81",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Knits",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c81"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c80",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Cardigans",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c80"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c82",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Pullovers",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c82"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c83",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Sweat Shirts",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c83"
+                },
+                {
+                  "_id": "5968b5b9634221055dfd8c84",
+                  "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40,5968b5b9634221055dfd8c6b",
+                  "title": "Turtle Necks",
+                  "__v": 0,
+                  "_w": 0,
+                  "parentId": "5968b5b9634221055dfd8c6b",
+                  "depth": 3,
+                  "id": "5968b5b9634221055dfd8c84"
+                }
+              ]
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c65",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c40",
+              "title": "Dresses",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c40",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c65"
+            }
+          ]
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c3f",
+          "path": ",5968b5b8634221055dfd8c2d",
+          "title": "Indian Wear",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2d",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c3f",
+          "children": [
+            {
+              "_id": "5968b5b9634221055dfd8c62",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Bridal Wear",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c62"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c61",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Suits",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c61"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c5e",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Dupatta",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c5e"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c63",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Shawls",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c63"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c5c",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Salwars and Churidaars",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c5c"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c64",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Others",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c64"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c5f",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Lehngas",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c5f"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c5d",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Blouses/Cholis",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c5d"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c60",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Sarees",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c60"
+            },
+            {
+              "_id": "5968b5b9634221055dfd8c5b",
+              "path": ",5968b5b8634221055dfd8c2d,5968b5b9634221055dfd8c3f",
+              "title": "Kurtis",
+              "__v": 0,
+              "_w": 0,
+              "parentId": "5968b5b9634221055dfd8c3f",
+              "depth": 2,
+              "id": "5968b5b9634221055dfd8c5b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_id": "5968b5b8634221055dfd8c2e",
+      "path": "",
+      "title": "Shoes",
+      "fullWidthImage": "http://54.254.175.129:9000/uploads/1504764208768.png",
+      "halfWidthImage": "http://54.254.175.129:9000/uploads/1504764208778.png",
+      "__v": 0,
+      "_w": 0,
+      "parentId": null,
+      "depth": 0,
+      "id": "5968b5b8634221055dfd8c2e",
+      "children": [
+        {
+          "_id": "5968b5b9634221055dfd8c4f",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Flats",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4f"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c54",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Juttis and Kohlapuris",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c54"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c4e",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Wedges",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4e"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c53",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Sports Shoes",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c53"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c4d",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Pumps",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4d"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c52",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Sneakers",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c52"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c4c",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Stilettos",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4c"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c51",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Peep Toes",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c51"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c4b",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Boots",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c4b"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c50",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Ballerinas",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c50"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c55",
+          "path": ",5968b5b8634221055dfd8c2e",
+          "title": "Others",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2e",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c55"
+        }
+      ]
+    },
+    {
+      "_id": "5968b5b8634221055dfd8c2f",
+      "path": "",
+      "title": "Beauty",
+      "fullWidthImage": "http://54.254.175.129:9000/uploads/1504764259294.png",
+      "halfWidthImage": "http://54.254.175.129:9000/uploads/1504764259342.png",
+      "__v": 0,
+      "_w": 0,
+      "parentId": null,
+      "depth": 0,
+      "id": "5968b5b8634221055dfd8c2f",
+      "children": [
+        {
+          "_id": "5968b5b9634221055dfd8c5a",
+          "path": ",5968b5b8634221055dfd8c2f",
+          "title": "Fragrance",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2f",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c5a"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c57",
+          "path": ",5968b5b8634221055dfd8c2f",
+          "title": "Skin",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2f",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c57"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c58",
+          "path": ",5968b5b8634221055dfd8c2f",
+          "title": "Hair",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2f",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c58"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c59",
+          "path": ",5968b5b8634221055dfd8c2f",
+          "title": "Bath and Body",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2f",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c59"
+        },
+        {
+          "_id": "5968b5b9634221055dfd8c56",
+          "path": ",5968b5b8634221055dfd8c2f",
+          "title": "Makeup",
+          "__v": 0,
+          "_w": 0,
+          "parentId": "5968b5b8634221055dfd8c2f",
+          "depth": 1,
+          "id": "5968b5b9634221055dfd8c56"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
