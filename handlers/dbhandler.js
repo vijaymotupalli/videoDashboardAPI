@@ -114,6 +114,46 @@ var dbHandler = {
 
         });
     },
+    addSchool: function (school) {
+        return new Promise(function (resolve, reject) {
+            return models.schools.create({
+                    name: school.name,
+                }).then(function (school, err) {
+                    if (!err) {
+                        resolve(school);
+                    }
+                }).catch(function (error) {
+                    reject(error)
+                })
+        });
+    },
+    editAdmin : function (adminId,updateData) {
+        return new Promise(function (resolve, reject) {
+            return models.admins.update({_id:adminId},updateData).then(function (admin, err) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(admin)
+            }).catch(function (error) {
+                reject(error)
+            })
+
+        });
+    },
+    editVideo : function (videoId,updateData) {
+        return new Promise(function (resolve, reject) {
+            return models.videos.update({_id:videoId},updateData).then(function (video, err) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(video)
+            }).catch(function (error) {
+                reject(error)
+            })
+
+        });
+    },
+
 }
 
 

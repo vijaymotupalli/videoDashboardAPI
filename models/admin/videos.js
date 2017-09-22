@@ -97,6 +97,32 @@ var videos = {
         });
 
     },
+    editVideo:function (req,res) {
+
+        var title = req.body.title;
+        var standard = req.body.standard;
+        var subject = req.body.subject;
+        var description = req.body.description;
+        var videoId = req.params.videoId;
+
+        var videoData = {
+            title: title,
+            standard: standard,
+            subject:subject,
+            description:description
+        }
+
+        dbhandler.editVideo(videoId,videoData).then(function (video) {
+            return res.status(200).json({title:"Video Updated Successfully"})
+        },function (errMsg) {
+            return res.status(400).json({
+                status: 400,
+                title: 'Failed to Update Video',
+                msg: errMsg
+            });
+        });
+
+    },
 
 
 }
@@ -112,3 +138,4 @@ function GetUrlsForUploadedDocs(files) {
 }
 
 module.exports = videos
+

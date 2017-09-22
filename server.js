@@ -15,7 +15,6 @@ var config = require('./config/index')
 
 var app_routes = require('./routes/app');
 var admin_routes = require('./routes/admin');
-var syncdb_routes = require('./routes/syncdb');
 
 var app = express();
 require('expressjs-api-explorer')(app,express);
@@ -119,7 +118,6 @@ app.post('/testupload',function (req ,res) {
 
 app_routes(app);
 admin_routes(app);
-syncdb_routes(app);
 
 
 // catch 404 and forward to error handler

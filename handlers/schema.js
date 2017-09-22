@@ -23,20 +23,27 @@ var videoSchema = new mongoose.Schema({
     school:{type: String}
 },{ versionKey: false , timestamps: true});
 
+var schoolSchema = new mongoose.Schema({
+    name:{type: String,required: true}
+})
+
 
 //plugins
 adminSchema.plugin(customId, {mongoose: mongoose});
 videoSchema.plugin(customId, {mongoose: mongoose});
+schoolSchema.plugin(customId, {mongoose: mongoose});
 
 //models
 
 var admins = mongoose.model('admins',adminSchema,'admins');
 var videos = mongoose.model('videos',videoSchema,'videos');
+var schools = mongoose.model('schools',schoolSchema,'schools');
 
 
 //exports
 
 exports.admins = admins;
 exports.videos = videos;
+exports.schools = schools;
 
 

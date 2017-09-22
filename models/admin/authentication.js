@@ -99,38 +99,41 @@ var authentication = {
         })
 
     },
-    // updateAdmin:function (req,res) {
-    //
-    //     var phone = req.body.phone;
-    //     var name = req.body.name;
-    //     var school = req.body.school;
-    //     var address = req.body.address;
-    //
-    //     if(!adminId){
-    //         return res.status(400).json({
-    //             title: 'Admin Id Cant Be Empty',
-    //             msg: 'Please Enter Admin Id'
-    //         });
-    //     }
-    //
-    //     dbhandler.updateAdmin(adminId,{roles:roles,name:name,isActive:isActive}).then(function (updatedAdmin) {
-    //         res.status(200).json(updatedAdmin)
-    //
-    //     },function (errMsg) {
-    //         res.status(400);
-    //         return res.json({
-    //             title: 'Failed To Update Admin',
-    //             msg: errMsg
-    //         });
-    //     }).catch(function (err) {
-    //         res.status(400);
-    //         return res.json({
-    //             title: 'Failed To Update Admin',
-    //             msg: err
-    //         });
-    //     })
-    //
-    // }
+    editAdmin:function (req,res) {
+
+       // var phone = req.body.phone;
+        var adminData = req.user
+        var adminId = adminData._id
+        var name = req.body.name;
+      //  var school = req.body.school;
+        var address = req.body.address;
+
+        if(!adminId){
+            return res.status(400).json({
+                title: 'Admin Id Cant Be Empty',
+                msg: 'Please Enter Admin Id'
+            });
+        }
+        var updateData = {name:name,address:address}
+
+        dbhandler.editAdmin(adminId,updateData).then(function (updatedAdmin) {
+            res.status(200).json(updatedAdmin)
+
+        },function (errMsg) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Update Admin',
+                msg: errMsg
+            });
+        }).catch(function (err) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Update Admin',
+                msg: err
+            });
+        })
+
+    }
 
     
 }
