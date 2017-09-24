@@ -26,18 +26,28 @@ var videoSchema = new mongoose.Schema({
 var schoolSchema = new mongoose.Schema({
     name:{type: String,required: true}
 })
+var standardSchema = new mongoose.Schema({
+    name:{type: Number,required: true}
+})
+var subjectSchema = new mongoose.Schema({
+    name:{type: String,required: true}
+})
 
 
 //plugins
 adminSchema.plugin(customId, {mongoose: mongoose});
 videoSchema.plugin(customId, {mongoose: mongoose});
 schoolSchema.plugin(customId, {mongoose: mongoose});
+subjectSchema.plugin(customId, {mongoose: mongoose});
+standardSchema.plugin(customId, {mongoose: mongoose});
 
 //models
 
 var admins = mongoose.model('admins',adminSchema,'admins');
 var videos = mongoose.model('videos',videoSchema,'videos');
 var schools = mongoose.model('schools',schoolSchema,'schools');
+var subjects = mongoose.model('subjects',subjectSchema,'subjects');
+var standards = mongoose.model('standards',standardSchema,'standards');
 
 
 //exports
@@ -45,5 +55,7 @@ var schools = mongoose.model('schools',schoolSchema,'schools');
 exports.admins = admins;
 exports.videos = videos;
 exports.schools = schools;
+exports.standards = standards;
+exports.subjects = subjects;
 
 

@@ -14,6 +14,7 @@ aws.config.loadFromPath('./config/config.json');
 var config = require('./config/index')
 
 var app_routes = require('./routes/app');
+var data_routes = require('./routes/data');
 var admin_routes = require('./routes/admin');
 
 var app = express();
@@ -118,6 +119,7 @@ app.post('/testupload',function (req ,res) {
 
 app_routes(app);
 admin_routes(app);
+data_routes(app);
 
 
 // catch 404 and forward to error handler

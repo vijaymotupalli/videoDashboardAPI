@@ -27,6 +27,7 @@ var dbHandler = {
 
     //admin
     login: function (email, password) {
+        console.log(email,password)
         return new Promise(function (resolve, reject) {
             models.admins.findOne({email: email, password: password}, {password: 0},function (err, admin) {
                     if (!err) {
@@ -89,9 +90,11 @@ var dbHandler = {
         });
     },
     getVideos: function (admin) {
-        console.log("----admin----",admin)
+        var query = {admin:admin._id}
+        if(admin.role == "SUPER_ADMIN"){query={}}
+        console.log("----query----",query)
         return new Promise(function (resolve, reject) {
-            return models.videos.find({admin:admin}).then(function (videos, err) {
+            return models.videos.find(query).then(function (videos, err) {
                     if (!err) {
                         resolve(videos);
                     }
@@ -112,19 +115,6 @@ var dbHandler = {
                     reject(error)
                 })
 
-        });
-    },
-    addSchool: function (school) {
-        return new Promise(function (resolve, reject) {
-            return models.schools.create({
-                    name: school.name,
-                }).then(function (school, err) {
-                    if (!err) {
-                        resolve(school);
-                    }
-                }).catch(function (error) {
-                    reject(error)
-                })
         });
     },
     editAdmin : function (adminId,updateData) {
@@ -151,6 +141,28 @@ var dbHandler = {
                 reject(error)
             })
 
+        });
+    },
+    addData: function (data,collection) {
+        return new Promise(function (resolve, reject) {
+            return models[collection].create(data).then(function (data, err) {
+                if (!err) {
+                    resolve(data);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
+    getData: function (collection) {
+        return new Promise(function (resolve, reject) {
+            return models[collection].find().then(function (data, err) {
+                if (!err) {
+                    resolve(data);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
         });
     },
 

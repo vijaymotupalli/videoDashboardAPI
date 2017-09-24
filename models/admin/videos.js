@@ -76,8 +76,8 @@ var videos = {
 
     },
     getVideos:function (req,res) {
-        var admin = req.user._id
-        if(!admin){
+        var admin = req.user
+        if(!admin || !admin._id){
             return res.status(400).json({
                 status: 400,
                 title: 'User Cant Be Empty',
