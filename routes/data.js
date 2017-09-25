@@ -10,6 +10,14 @@ module.exports = function (app) {
     app.post('/data/subjects',data.addSubject);
     app.post('/data/standards',data.addStandard);
 
+    app.put('/data/schools/:schoolId',data.editSchool);
+    app.put('/data/subjects/:subjectId',data.editSubject);
+    app.put('/data/standards/:standardId',data.editStandard);
+
+    app.delete('/data/schools/:schoolId',data.deleteSchool);
+    app.delete('/data/subjects/:subjectId',data.deleteSubject);
+    app.delete('/data/standards/:standardId',data.deleteStandard);
+
 }
 
 

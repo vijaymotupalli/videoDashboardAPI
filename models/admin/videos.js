@@ -77,6 +77,13 @@ var videos = {
     },
     getVideos:function (req,res) {
         var admin = req.user
+        var filters = {
+            subject:req.body.subject ? req.body.subject :[],
+            standard:req.body.standard ? req.body.standard :[],
+            school:req.body.school ? req.body.school :[],
+            admin:req.body.admin ? req.body.admin :[]
+        }
+
         if(!admin || !admin._id){
             return res.status(400).json({
                 status: 400,
@@ -85,7 +92,7 @@ var videos = {
             });
         }
 
-       return dbhandler.getVideos(admin).then(function (videos) {
+       return dbhandler.getVideos(admin,filters).then(function (videos) {
             return res.status(200).json(videos)
 
         },function (errMsg) {
@@ -118,6 +125,20 @@ var videos = {
             return res.status(400).json({
                 status: 400,
                 title: 'Failed to Update Video',
+                msg: errMsg
+            });
+        });
+
+    },
+    deleteVideo:function (req,res) {
+        var admin = req.user
+        var videoId = req.params.videoId;
+        dbhandler.deleteVideo(videoId,admin).then(function (video) {
+            return res.status(200).json({title:"Video Deleted Successfully"})
+        },function (errMsg) {
+            return res.status(400).json({
+                status: 400,
+                title: 'Failed to Delete Video',
                 msg: errMsg
             });
         });

@@ -89,12 +89,17 @@ var dbHandler = {
 
         });
     },
-    getVideos: function (admin) {
+    getVideos: function (admin,filters) {
+        var andQuery = []
         var query = {admin:admin._id}
-        if(admin.role == "SUPER_ADMIN"){query={}}
-        console.log("----query----",query)
+        if(admin.role != config.superAdmin){andQuery.push(query)}
+        if(filters.subject && filters.subject.length)andQuery.push({subject :{$in:filters.subject}})
+        if(filters.standard && filters.standard.length)andQuery.push({standard :{$in:filters.standard}})
+        if(admin.role == config.superAdmin && filters.school && filters.school.length)andQuery.push({school :{$in:filters.school}})
+        if(admin.role == config.superAdmin && filters.admin && filters.admin.length)andQuery.push({admin :{$in:filters.admin}})
+
         return new Promise(function (resolve, reject) {
-            return models.videos.find(query).then(function (videos, err) {
+            return models.videos.find({$and:andQuery}).then(function (videos, err) {
                     if (!err) {
                         resolve(videos);
                     }
@@ -143,11 +148,58 @@ var dbHandler = {
 
         });
     },
+    deleteVideo : function (videoId,admin) {
+
+       var query = ""
+        query = {_id:videoId,admin:admin._id}
+
+        if(admin.role == config.superAdmin){
+            query = {_id:videoId}
+        }
+
+        return new Promise(function (resolve, reject) {
+            return models.videos.remove(query).then(function (video, err) {
+                if (err) {
+                    reject(err);
+                }
+                if(!video.result.n){
+                    reject("Video Not Found")
+                }
+                resolve("Video Deleted Successfully")
+
+            }).catch(function (error) {
+                reject(error)
+            })
+
+        });
+    },
     addData: function (data,collection) {
         return new Promise(function (resolve, reject) {
             return models[collection].create(data).then(function (data, err) {
                 if (!err) {
                     resolve(data);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
+    editData: function (id,data,collection) {
+        return new Promise(function (resolve, reject) {
+            return models[collection].update({_id:id},{name:data.name}).then(function (data, err) {
+                if (!err) {
+                    resolve(data);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
+    deleteData: function (id,collection) {
+        return new Promise(function (resolve, reject) {
+            return models[collection].remove({_id:id}).then(function (data, err) {
+                if (!err) {
+                    resolve({title:"Deleted Successfully"});
                 }
             }).catch(function (error) {
                 reject(error)
