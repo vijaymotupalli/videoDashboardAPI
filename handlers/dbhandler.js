@@ -53,7 +53,7 @@ var dbHandler = {
                     name: admin.name,
                     email: admin.email,
                     password: admin.password,
-                    phone: admin.roles,
+                    phone: admin.phone,
                     school: admin.school,
                     address: admin.address
                 }).then(function (admin, err) {
@@ -92,14 +92,23 @@ var dbHandler = {
     getVideos: function (admin,filters) {
         var andQuery = []
         var query = {admin:admin._id}
+
+console.log(admin,config.superAdmin)
+
         if(admin.role != config.superAdmin){andQuery.push(query)}
         if(filters.subject && filters.subject.length)andQuery.push({subject :{$in:filters.subject}})
         if(filters.standard && filters.standard.length)andQuery.push({standard :{$in:filters.standard}})
         if(admin.role == config.superAdmin && filters.school && filters.school.length)andQuery.push({school :{$in:filters.school}})
         if(admin.role == config.superAdmin && filters.admin && filters.admin.length)andQuery.push({admin :{$in:filters.admin}})
-
+        var finalQuery = andQuery.length ? {$and:andQuery}:{}
         return new Promise(function (resolve, reject) {
-            return models.videos.find({$and:andQuery}).then(function (videos, err) {
+            return models.videos.aggregate([{$match:finalQuery},
+                {$lookup:{from:"schools",localField:"school",foreignField:"_id",as:"school"}},
+                {$lookup:{from:"standards",localField:"standard",foreignField:"_id",as:"standard"}},
+                {$lookup:{from:"subjects",localField:"subject",foreignField:"_id",as:"subject"}},
+                {$addFields:{school:{$arrayElemAt:["$school",0]},standard:{$arrayElemAt:["$standard",0]},
+                    subject:{$arrayElemAt:["$subject",0]}}}
+            ]).then(function (videos, err) {
                     if (!err) {
                         resolve(videos);
                     }
@@ -122,9 +131,44 @@ var dbHandler = {
 
         });
     },
+    getUserDetails: function (admin) {
+        return new Promise(function (resolve, reject) {
+            return models.admins.findOne({email:admin}).then(function (admin, err) {
+                if (!err) {
+                        resolve(admin);
+                    }
+                }).catch(function (error) {
+                    reject(error)
+                })
+
+        });
+    },
+    getAdmins: function () {
+        return new Promise(function (resolve, reject) {
+            return models.admins.find({}).then(function (admins, err) {
+                if (!err) {
+                        resolve(admins);
+                    }
+                }).catch(function (error) {
+                    reject(error)
+                })
+
+        });
+    },
+    deleteAdmin: function (adminId) {
+        return new Promise(function (resolve, reject) {
+            return models.admins.remove({_id:adminId}).then(function (data, err) {
+                if (!err) {
+                    resolve({title:"Deleted Successfully"});
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
     editAdmin : function (adminId,updateData) {
         return new Promise(function (resolve, reject) {
-            return models.admins.update({_id:adminId},updateData).then(function (admin, err) {
+            return models.admins.update({email:adminId},updateData).then(function (admin, err) {
                 if (err) {
                     reject(err);
                 }

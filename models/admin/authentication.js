@@ -22,7 +22,6 @@ var authentication = {
 
     },
     register:function (req,res) {
-
         var email = req.body.email;
         var name = req.body.name;
         var password = req.body.password;
@@ -99,13 +98,45 @@ var authentication = {
         })
 
     },
+    getUserDetails:function (req,res) {
+        var admin = req.params.adminId
+        if(!admin){
+            return res.status(400).json({
+                title: 'Admin  Cant Be Empty',
+                msg: 'Please Enter Admin '
+            });
+        }
+        dbhandler.getUserDetails(admin).then(function (admin) {
+
+            if(!admin){
+                return res.status(404).json({
+                    title: 'Admin Not Found',
+                    msg: "Admin You Are looking Not Found"
+                })
+            }
+
+            res.status(200).json(admin)
+        },function (errMsg) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get Admin Details',
+                msg: errMsg
+            });
+        }).catch(function (err) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get Admin Details',
+                msg: err
+            });
+        })
+
+    },
     editAdmin:function (req,res) {
 
-       // var phone = req.body.phone;
-        var adminData = req.user
-        var adminId = adminData._id
+        console.log("----adminID----",req.params.adminId)
+        var phone = req.body.phone;
+        var adminId = req.params.adminId
         var name = req.body.name;
-      //  var school = req.body.school;
         var address = req.body.address;
 
         if(!adminId){
@@ -114,7 +145,7 @@ var authentication = {
                 msg: 'Please Enter Admin Id'
             });
         }
-        var updateData = {name:name,address:address}
+        var updateData = {name:name,address:address,phone:phone}
 
         dbhandler.editAdmin(adminId,updateData).then(function (updatedAdmin) {
             res.status(200).json(updatedAdmin)
@@ -133,7 +164,54 @@ var authentication = {
             });
         })
 
-    }
+    },
+    getAdmins:function (req,res) {
+
+        dbhandler.getAdmins().then(function (admins) {
+
+            if(!admins){
+                return res.status(404).json({
+                    title: 'Admins Not Found',
+                    msg: "Admins You Are looking Not Found"
+                })
+            }
+
+            res.status(200).json(admins)
+        },function (errMsg) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get Admins',
+                msg: errMsg
+            });
+        }).catch(function (err) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get Admins',
+                msg: err
+            });
+        })
+
+    },
+    deleteAdmin:function (req,res) {
+        var adminId = req.params.adminId
+        if(!adminId){
+            return res.status(400).json({
+                title: 'Failed to Remove Admin',
+                msg: "Admin Id required"
+            })
+        }
+        dbhandler.deleteAdmin(adminId).then(function (result) {
+            return res.status(200).json(result)
+
+        },function (errMsg) {
+            return res.status(400).json({
+                status: 400,
+                title: 'Failed to Delete Admin',
+                msg: errMsg
+            });
+        });
+
+    },
 
     
 }
