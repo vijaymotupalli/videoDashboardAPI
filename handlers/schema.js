@@ -13,6 +13,16 @@ var adminSchema = new mongoose.Schema({
     address:{ type: String },
 },{ versionKey: false , timestamps: true});
 
+var userSchema = new mongoose.Schema({
+    name:{type:String},
+    userName:{ type: String},
+    email:{ type: String},
+    password:{ type: String ,required: true},
+    phone:{ type: String },
+    school:{ type: String },
+    address:{ type: String },
+},{ versionKey: false , timestamps: true});
+
 var videoSchema = new mongoose.Schema({
     title:{ type: String,required: true},
     url:{ type: String,required: true},
@@ -40,10 +50,12 @@ videoSchema.plugin(customId, {mongoose: mongoose});
 schoolSchema.plugin(customId, {mongoose: mongoose});
 subjectSchema.plugin(customId, {mongoose: mongoose});
 standardSchema.plugin(customId, {mongoose: mongoose});
+userSchema.plugin(customId, {mongoose: mongoose});
 
 //models
 
 var admins = mongoose.model('admins',adminSchema,'admins');
+var users = mongoose.model('users',userSchema,'users');
 var videos = mongoose.model('videos',videoSchema,'videos');
 var schools = mongoose.model('schools',schoolSchema,'schools');
 var subjects = mongoose.model('subjects',subjectSchema,'subjects');
@@ -53,6 +65,7 @@ var standards = mongoose.model('standards',standardSchema,'standards');
 //exports
 
 exports.admins = admins;
+exports.users = users;
 exports.videos = videos;
 exports.schools = schools;
 exports.standards = standards;

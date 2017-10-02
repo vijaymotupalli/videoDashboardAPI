@@ -40,6 +40,21 @@ var dbHandler = {
                 })
         });
     },
+    userLogin: function (username, password) {
+        return new Promise(function (resolve, reject) {
+          return  models.users.findOne({userName: username, password: password}, {password: 0},function (err, user) {
+
+                    if (!err) {
+                        if(user){
+                            var code = jwt.generateAuthToken(user);
+                            user = Object.assign({access_token:code},JSON.parse(JSON.stringify(user)))
+                        }
+                       return resolve(user)
+                    }
+                   return reject(err);
+                })
+        });
+    },
     register: function (admin) {
         return new Promise(function (resolve, reject) {
             return models.admins.findOne({email: admin.email}).then(function (existedAdmin, err) {
@@ -63,6 +78,54 @@ var dbHandler = {
                 }).catch(function (error) {
                     reject(error)
                 })
+            })
+
+        });
+    },
+    appRegister: function (user) {
+        return new Promise(function (resolve, reject) {
+            return models.users.findOne({userName: user.username}).then(function (existedUser, err) {
+                if (existedUser) {
+                   return reject("UserName Already Exists")
+                }
+
+                if (err) {
+                   return reject(err);
+                }
+                return models.users.findOne({phone:user.phone}).then(function (existedUser,err) {
+                    if(existedUser){
+                       return reject("Phone Number Already Exists")
+                    }
+                    if (err) {
+                       return reject(err);
+                    }
+
+                    return models.users.findOne({email:user.email}).then(function (existedUser,err) {
+                        if (existedUser) {
+                           return reject("Email Already Exists")
+                        }
+                        if (err) {
+                           return reject(err);
+                        }
+                        return models.users.create({
+                            name:user.name,
+                            userName: user.username,
+                            email: user.email,
+                            password: user.password,
+                            phone: user.phone,
+                            school: user.school,
+                            address: user.address
+                        }).then(function (user, err) {
+                            if (!err) {
+                               return resolve(user);
+                            }
+                        }).catch(function (error) {
+                            reject(error)
+                        })
+
+                    })
+                })
+
             })
 
         });
@@ -143,6 +206,18 @@ console.log(admin,config.superAdmin)
 
         });
     },
+    getAppUserDetails: function (userId) {
+        return new Promise(function (resolve, reject) {
+            return models.users.findOne({_id:userId},{password:0}).then(function (user, err) {
+                if (!err) {
+                        resolve(user);
+                    }
+                }).catch(function (error) {
+                    reject(error)
+                })
+
+        });
+    },
     getAdmins: function () {
         return new Promise(function (resolve, reject) {
             return models.admins.find({}).then(function (admins, err) {
@@ -155,9 +230,32 @@ console.log(admin,config.superAdmin)
 
         });
     },
+    getAppUsers: function () {
+        return new Promise(function (resolve, reject) {
+            return models.users.find({},{password:0}).sort({createdAt:-1}).then(function (users, err) {
+                if (!err) {
+                    resolve(users);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+
+        });
+    },
     deleteAdmin: function (adminId) {
         return new Promise(function (resolve, reject) {
             return models.admins.remove({_id:adminId}).then(function (data, err) {
+                if (!err) {
+                    resolve({title:"Deleted Successfully"});
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
+    deleteAppUser: function (userId) {
+        return new Promise(function (resolve, reject) {
+            return models.users.remove({_id:userId}).then(function (data, err) {
                 if (!err) {
                     resolve({title:"Deleted Successfully"});
                 }
@@ -173,6 +271,19 @@ console.log(admin,config.superAdmin)
                     reject(err);
                 }
                 resolve(admin)
+            }).catch(function (error) {
+                reject(error)
+            })
+
+        });
+    },
+    editAppUser : function (userId,updateData) {
+        return new Promise(function (resolve, reject) {
+            return models.users.update({_id:userId},updateData).then(function (user, err) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(user)
             }).catch(function (error) {
                 reject(error)
             })

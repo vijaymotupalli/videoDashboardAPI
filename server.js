@@ -83,6 +83,7 @@ app.all('/*', function(req, res, next) {
 });
 app.use('/uploads',express.static(path.join(__dirname, 'static/uploads')));
 app.all('/api/*', [require('./middleware/validateAdmin')]);
+app.all('/app/*', [require('./middleware/validateAdmin')]);
 
 app.post('/testupload',function (req ,res) {
 

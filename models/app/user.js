@@ -1,139 +1,186 @@
 var dbhandler = require('../../handlers/dbhandler');
 var config = require('../../config/index');
 var utils = require('../../utils/jwt');
+var crypto = require('crypto');
+
 
 var user = {
 
-    checkUser: function (req, res) {
-        //TODO: Clean Up , checkUser params (ideally should be wriiten in dbhandler)
-        var id = req.params.id
-        var query = {"services.facebook.id": id}
-        var filter = {profileData: 1, profile: 1, _id: 1}
-        var options = {}
-        dbhandler.checkUser(query, filter, options).then(function (user) {
-            if (!user) {
-                res.status(200);
-                return res.json({status: 200, title: "User Not Found", userexist: false})
-            }
-            var userData = {
-                _id: user._id,
-                profile: user.profile
-            }
 
-            var userToken = utils.generateAuthToken(userData)
+    login:function (req,res) {
+        console.log("----api call----",req.username,req.passwordHash)
+        dbhandler.userLogin(req.username,req.passwordHash).then(function (user) {
+            if(!user){
+                return res.status(401).json({
+                    title: 'Invalid credentials',
+                    msg: "Incorrect Username or Password "
+                })
+            }
+            return res.json(user)
+        },function (errMsg) {
+            res.status(401);
+            return res.json({
+                title: 'Unauthorized Access',
+            });
+        })
 
-            res.status(200).json({
-                userexist: true,
-                user: user,
-                userToken: userToken
-            })
+    },
+    createUser: function (req, res) {
+
+     var    username = req.body.username
+     var    name = req.body.name
+     var    email = req.body.email
+     var    password = req.body.password
+     var    phone = req.body.phone
+     var    school = req.body.school ? req.body.school :""
+     var    address = req.body.address
+
+        if (!username || !email || !password || !phone) {
+            return res.json({
+                status: 400,
+                title: 'Failed To Create User',
+                msg: "Please Fill All Require Fields"
+            });
+        }
+
+        var user = {
+            name:name,
+            username :username,
+            email :email,
+            password :crypto.createHash('md5').update(password).digest("hex"),
+            phone :phone,
+            school :school,
+            address :address,
+        }
+
+        dbhandler.appRegister(user).then(function (user) {
+                    return res.status(200).json(user)
 
         }, function (errMsg) {
             res.status(400);
             return res.json({
                 status: 400,
-                title: 'Unable To Find User',
+                title: 'Failed To Create User',
+                msg: errMsg ? errMsg :errMsg.message
+            });
+        });
+
+
+    },
+    editAppUser:function (req,res) {
+
+
+        var userId = req.params.userId
+        var name = req.body.name;
+        var address = req.body.address;
+
+        if(!userId){
+            return res.status(400).json({
+                title: 'User Id Cant Be Empty',
+                msg: 'Please Enter User Id'
+            });
+        }
+        var updateData = {name:name,address:address}
+
+        dbhandler.editAppUser(userId,updateData).then(function (updatedUser) {
+            res.status(200).json(updatedUser)
+
+        },function (errMsg) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Update User',
                 msg: errMsg
             });
         }).catch(function (err) {
             res.status(400);
             return res.json({
-                title: 'Failed To Check User',
+                title: 'Failed To Update User',
                 msg: err
             });
-        });
+        })
+
     },
-    createUser: function (req, res) {
-        var data = req.body.userData
-        if (!data) {
-            return res.json({
-                status: 400,
-                title: 'Failed To Create User',
-                msg: "Userdata cant be empty"
-            });
-        }
+    getAppUsers:function (req,res) {
 
-        dbhandler.createUser(data).then(function (user) {
-            try {
-                var userTokenData = {
-                    _id: user._id,
-                    profile: user.profile
-                }
-                var userToken = utils.generateAuthToken(userTokenData)
+        dbhandler.getAppUsers().then(function (users) {
 
-                return res.status(200).json({
-                    user: {_id: user._id, profile: user.profile, profileData: user.profileData},
-                    userToken: userToken
+            if(!users){
+                return res.status(404).json({
+                    title: 'App Users Not Found',
+                    msg: "App Users You Are looking Not Found"
                 })
-            } catch (err) {
-                return res.json({
-                    status: 400,
-                    title: 'Failed To Create User',
-                    msg: err
-                });
             }
-        }, function (errMsg) {
+
+            res.status(200).json(users)
+
+        },function (errMsg) {
             res.status(400);
             return res.json({
-                status: 400,
-                title: 'Failed To Create User',
-                msg: errMsg.message
+                title: 'Failed To Get App Users',
+                msg: errMsg
             });
-        });
-
+        }).catch(function (err) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get App Users',
+                msg: err
+            });
+        })
 
     },
-    getUserProfile:function (req,res) {
-
+    deleteAppUser:function (req,res) {
         var userId = req.params.userId
         if(!userId){
             return res.status(400).json({
+                title: 'Failed to Remove User',
+                msg: "User Id required"
+            })
+        }
+        dbhandler.deleteAppUser(userId).then(function (result) {
+            return res.status(200).json(result)
+
+        },function (errMsg) {
+            return res.status(400).json({
                 status: 400,
-                title: 'User Id Cant Be Empty',
-                msg: "Please Enter User Id"
+                title: 'Failed to Delete User',
+                msg: errMsg
+            });
+        });
+
+    },
+    getAppUserDetails:function (req,res) {
+        var userId = req.params.userId
+        if(!userId){
+            return res.status(400).json({
+                title: 'User Id  Cant Be Empty',
+                msg: 'Please Enter User Id '
             });
         }
-        var data ={"userId":userId}
-        dbhandler.getUserProfile(data).then(function (user) {
-            if (!user) {
-                return res.status(200).json({status: 200, title: "User Not Found", msg: "User Not Found"})
+        dbhandler.getAppUserDetails(userId).then(function (user) {
+            if(!user){
+                return res.status(404).json({
+                    title: 'User Not Found',
+                    msg: "User You Are looking Not Found"
+                })
             }
             res.status(200).json(user)
-        }, function (errMsg) {
+        },function (errMsg) {
             res.status(400);
             return res.json({
-                status: 400,
-                title: 'Unable To Find User',
+                title: 'Failed To Get Admin Details',
                 msg: errMsg
             });
-        });
+        }).catch(function (err) {
+            res.status(400);
+            return res.json({
+                title: 'Failed To Get Admin Details',
+                msg: err
+            });
+        })
+
     },
-    logout: function (req, res) {
 
-        try {
-            var userToken = req.headers['usertoken'];
-            var userData = utils.decodeToken(userToken);
-            var userId = userData.user._id
-        } catch (err) {
-            return res.status(400).json({
-                title: 'Unable To Logout',
-                msg: "Invalid Token"
-            });
-        }
 
-        var data = {"userId": userId}
-        dbhandler.logout(data).then(function (user) {
-            res.status(200).json(user)
-        }, function (errMsg) {
-            res.status(400);
-            return res.json({
-                status: 400,
-                title: 'Unable To Logout',
-                msg: errMsg
-            });
-        });
-
-    }
 }
 
 module.exports = user;
