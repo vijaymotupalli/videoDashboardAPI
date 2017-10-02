@@ -107,7 +107,7 @@ console.log(admin,config.superAdmin)
                 {$lookup:{from:"standards",localField:"standard",foreignField:"_id",as:"standard"}},
                 {$lookup:{from:"subjects",localField:"subject",foreignField:"_id",as:"subject"}},
                 {$addFields:{school:{$arrayElemAt:["$school",0]},standard:{$arrayElemAt:["$standard",0]},
-                    subject:{$arrayElemAt:["$subject",0]}}}
+                    subject:{$arrayElemAt:["$subject",0]}}},{$sort:{createdAt:-1}}
             ]).then(function (videos, err) {
                     if (!err) {
                         resolve(videos);
