@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
 
     if (!req.headers.authorization) {
         console.log(req.url)
-        if (req.url == '/api/register' )
+        if (req.url == '/api/register' || req.url == '/app/login' )
         {
             return next();
         }

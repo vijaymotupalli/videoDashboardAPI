@@ -8,8 +8,18 @@ var user = {
 
 
     login:function (req,res) {
-        console.log("----api call----",req.username,req.passwordHash)
-        dbhandler.userLogin(req.username,req.passwordHash).then(function (user) {
+        var username = req.body.username
+        var password = req.body.password
+
+        if(!username || !password){
+            return res.status(401).json({
+                title: 'Username and Password Cant Be Empty',
+                msg: "Please Enter Username And Pssword"
+            })
+        }
+
+        var hashed_password = crypto.createHash('md5').update(password).digest("hex");
+        dbhandler.userLogin(username,hashed_password).then(function (user) {
             if(!user){
                 return res.status(401).json({
                     title: 'Invalid credentials',
