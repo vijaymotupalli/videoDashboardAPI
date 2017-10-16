@@ -36,7 +36,7 @@ var user = {
      var    address = req.body.address
 
         if (!username || !email || !password || !phone) {
-            return res.json({
+            return res.status(400).json({
                 status: 400,
                 title: 'Failed To Create User',
                 msg: "Please Fill All Require Fields"
