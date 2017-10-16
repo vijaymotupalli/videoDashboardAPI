@@ -78,11 +78,13 @@ var videos = {
     getVideos:function (req,res) {
         var admin = req.user
         var filters = {
-            subject:req.body.subjects ? req.body.subjects :[],
-            standard:req.body.standards ? req.body.standards :[],
-            schools:req.body.schools ? req.body.schoolss :[],
-            admin:req.body.admins ? req.body.admins :[]
+            subject:req.body.subject ? req.body.subject :[],
+            standard:req.body.standard ? req.body.standard :[],
+            school:req.body.school ? req.body.school:[],
+            admin:req.body.admin ? req.body.admin :[]
         }
+
+        console.log(filters)
 
         if(!admin || !admin._id){
             return res.status(400).json({

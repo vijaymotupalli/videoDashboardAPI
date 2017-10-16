@@ -164,6 +164,8 @@ console.log(admin,config.superAdmin)
         if(admin.role == config.superAdmin && filters.school && filters.school.length)andQuery.push({school :{$in:filters.school}})
         if(admin.role == config.superAdmin && filters.admin && filters.admin.length)andQuery.push({admin :{$in:filters.admin}})
         var finalQuery = andQuery.length ? {$and:andQuery}:{}
+
+        console.log(finalQuery)
         return new Promise(function (resolve, reject) {
             return models.videos.aggregate([{$match:finalQuery},
                 {$lookup:{from:"schools",localField:"school",foreignField:"_id",as:"school"}},
