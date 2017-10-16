@@ -10,6 +10,7 @@ var adminSchema = new mongoose.Schema({
     password:{ type: String ,required: true},
     phone:{ type: String },
     school:{ type: String },
+    schoolLogoUrl:{ type: String },
     address:{ type: String },
 },{ versionKey: false , timestamps: true});
 

@@ -27,6 +27,7 @@ var authentication = {
         var password = req.body.password;
         var phone = req.body.phone;
         var school = req.body.school ? req.body.school:"";
+        var schoolLogoUrl = req.body.schoolLogoUrl ? req.body.schoolLogoUrl:"";
         var address = req.body.address;
 
         if(!email){
@@ -50,7 +51,8 @@ var authentication = {
             password: crypto.createHash('md5').update(password).digest("hex"),
             phone:phone,
             school:school,
-            address:address
+            address:address,
+            schoolLogoUrl:schoolLogoUrl
         }
 
         dbhandler.register(admin).then(function (admin) {
@@ -213,7 +215,7 @@ var authentication = {
 
     },
 
-    
+
 }
 
 module.exports = authentication

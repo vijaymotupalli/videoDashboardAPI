@@ -70,7 +70,7 @@ var dbHandler = {
                     password: admin.password,
                     phone: admin.phone,
                     school: admin.school,
-                    address: admin.address
+                    address: admin.address,schoolLogoUrl:admin.schoolLogoUrl
                 }).then(function (admin, err) {
                     if (!err) {
                         resolve(admin);

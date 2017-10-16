@@ -20,6 +20,7 @@ module.exports = function (app) {
     app.put('/api/videos/:videoId',videos.editVideo);
     app.delete('/api/videos/:videoId',videos.deleteVideo);
     app.get('/api/myprofile',auth.getAdminDetails);
+    app.post('/api/uploadlogo',videos.uploadLogo);
 
 
 

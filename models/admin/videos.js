@@ -146,6 +146,31 @@ var videos = {
         });
 
     },
+    uploadLogo:function (req ,res) {
+        var s3 = new aws.S3({});
+        var upload = multer({
+            storage: multerS3({
+                s3: s3,
+                bucket: 'codeuniverse',
+                acl: 'public-read',
+                contentType: multerS3.AUTO_CONTENT_TYPE,
+                key: function (req, file, cb) {
+                    cb(null, file.originalname)
+                }
+            })
+        }).single('file');
+        upload(req, res, function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                res.status(200);
+                res.json(req.file.location);
+            }
+        });
+
+    },
+
 
 
 }
