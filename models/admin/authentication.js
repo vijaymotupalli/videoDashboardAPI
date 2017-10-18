@@ -140,6 +140,7 @@ var authentication = {
         var adminId = req.params.adminId
         var name = req.body.name;
         var address = req.body.address;
+        var schoolLogoUrl = req.body.schoolLogoUrl
 
         if(!adminId){
             return res.status(400).json({
@@ -147,7 +148,7 @@ var authentication = {
                 msg: 'Please Enter Admin Id'
             });
         }
-        var updateData = {name:name,address:address,phone:phone}
+        var updateData = {name:name,address:address,phone:phone,schoolLogoUrl:schoolLogoUrl}
 
         dbhandler.editAdmin(adminId,updateData).then(function (updatedAdmin) {
             res.status(200).json(updatedAdmin)

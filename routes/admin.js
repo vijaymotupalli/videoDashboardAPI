@@ -23,11 +23,6 @@ module.exports = function (app) {
     app.post('/api/uploadlogo',videos.uploadLogo);
 
 
-
-
-
-
-
 }
 
 
