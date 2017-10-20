@@ -4,6 +4,7 @@ var dashboard = require('../models/app/homeDashboard');
 var fileHandler = require('../utils/uploadFiles');
 var facets = require('../models/app/facets');
 var sos = require('../models/app/sos');
+var videos = require('../models/app/videos');
 
 module.exports = function (app) {
 
@@ -13,6 +14,9 @@ module.exports = function (app) {
     app.put('/app/users/:userId',users.editAppUser);
     app.get('/app/users/:userId',users.getAppUserDetails);
     app.delete('/app/users/:userId',users.deleteAppUser);
+
+    app.post('/app/videos/applyfilter',videos.getAppUserVideos);
+
 
 
 

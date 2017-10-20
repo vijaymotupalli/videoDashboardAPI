@@ -155,9 +155,6 @@ var dbHandler = {
     getVideos: function (admin,filters) {
         var andQuery = []
         var query = {admin:admin._id}
-
-console.log(admin,config.superAdmin)
-
         if(admin.role != config.superAdmin){andQuery.push(query)}
         if(filters.subject && filters.subject.length)andQuery.push({subject :{$in:filters.subject}})
         if(filters.standard && filters.standard.length)andQuery.push({standard :{$in:filters.standard}})
@@ -165,7 +162,6 @@ console.log(admin,config.superAdmin)
         if(admin.role == config.superAdmin && filters.admin && filters.admin.length)andQuery.push({admin :{$in:filters.admin}})
         var finalQuery = andQuery.length ? {$and:andQuery}:{}
 
-        console.log(finalQuery)
         return new Promise(function (resolve, reject) {
             return models.videos.aggregate([{$match:finalQuery},
                 {$lookup:{from:"schools",localField:"school",foreignField:"_id",as:"school"}},
@@ -368,6 +364,36 @@ console.log(admin,config.superAdmin)
             return models[collection].find().then(function (data, err) {
                 if (!err) {
                     resolve(data);
+                }
+            }).catch(function (error) {
+                reject(error)
+            })
+        });
+    },
+    getAppUserVideos: function (user,filters) {
+        var andQuery = []
+        var query ={}
+        if(user.school){
+            query = {$or:[{school:user.school}, {school:"" }]}
+        }else{
+            query = {school:""}
+        }
+        andQuery.push(query);
+        if(filters.subject && filters.subject.length)andQuery.push({subject :{$in:filters.subject}})
+        if(filters.standard && filters.standard.length)andQuery.push({standard :{$in:filters.standard}})
+
+        var finalQuery = andQuery.length ? {$and:andQuery}:{}
+
+        return new Promise(function (resolve, reject) {
+            return models.videos.aggregate([{$match:finalQuery},
+                {$lookup:{from:"schools",localField:"school",foreignField:"_id",as:"school"}},
+                {$lookup:{from:"standards",localField:"standard",foreignField:"_id",as:"standard"}},
+                {$lookup:{from:"subjects",localField:"subject",foreignField:"_id",as:"subject"}},
+                {$addFields:{school:{$arrayElemAt:["$school",0]},standard:{$arrayElemAt:["$standard",0]},
+                    subject:{$arrayElemAt:["$subject",0]}}},{$sort:{createdAt:-1}}
+            ]).then(function (videos, err) {
+                if (!err) {
+                    resolve(videos);
                 }
             }).catch(function (error) {
                 reject(error)

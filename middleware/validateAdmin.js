@@ -5,13 +5,34 @@ var crypto = require('crypto');
 module.exports = function(req, res, next) {
 
     if (!req.headers.authorization) {
-        console.log(req.url)
-        if (req.url == '/api/register' || req.url == '/app/login' )
-        {
-            return next();
+
+
+        if(!req.headers.usertoken){
+            console.log(req.url)
+            if (req.url == '/api/register' || req.url == '/app/login' )
+            {
+                return next();
+            }
+            return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
+        }else{
+            var usertoken = req.headers.usertoken;
+
+            try {
+                payload = jwt.decodeBearerToken(usertoken);
+            }
+            catch (err) {
+                return res.status(401).send({message: err.message});
+            }
+
+            if (payload.exp <= Date.now()) {
+                return res.status(401).send({message: 'Token has expired'});
+            }
+            req.user = payload.user;
+           return next();
         }
-        return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
+
     }
+
 
     var token = req.headers.authorization.split(' ');
     var AUTH_TYPE = token[0];
